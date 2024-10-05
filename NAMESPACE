@@ -2,3 +2,4 @@
 
 export(microCTr_example)
 export(read_key_csv)
+export(read_trabecular_csv)
