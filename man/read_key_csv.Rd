@@ -4,19 +4,36 @@
 \alias{read_key_csv}
 \title{Read in a sample definition key file}
 \usage{
-read_key_csv(file, ...)
+read_key_csv(file, sites = c("Spine", "Met", "Dia"), ...)
 }
 \arguments{
 \item{file}{The file path to the \code{key.csv} file.}
+
+\item{sites}{A character vector of the sites scanned, included as columns in
+the \code{key.csv}.}
 
 \item{...}{Additional arguments passed on to \code{readr::read_csv()}.}
 }
 \value{
 A tibble/data frame containing the sample definitions.
+For example:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{|   AS|Sex |Genotype | SampNo|Site  | MeasNo|
+|----:|:---|:--------|------:|:-----|------:|
+| 1365|M   |Cre      |  10778|Spine |  31711|
+| 1365|M   |Cre      |  10778|Met   |  31710|
+| 1365|M   |Cre      |  10778|Dia   |  31712|
+| 1366|F   |Cre      |  10779|Spine |  31714|
+| 1366|F   |Cre      |  10779|Met   |  31713|
+| 1366|F   |Cre      |  10779|Dia   |  31715|
+}\if{html}{\out{</div>}}
 }
 \description{
-Read in a sample definition key file
+This is a wrapper around \code{readr::read_csv()} to read in and process
+a \code{key.csv} file that contains the lookup table defining each sample's
+AS (key registry) number, sex, genotype (if applicable), treatment (if
+applicable), sample number, and the measure number of each site scanned.
 }
 \examples{
-key <- read_key_csv("data/key.csv")
+key <- read_key_csv(microCTr_example("example-key.csv"))
 }
