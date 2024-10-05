@@ -1,12 +1,11 @@
 Package: microCTr
-Title: What the Package Does (One Line, Title Case)
+Title: Analyze microCT Data
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    person("Richard", "Lindsey", , "richard.c.lindsey@ricompute.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-9911-4136"))
+Description: This packages contains functions to read in and analyze microCT data as currently performed in the Khosla Lab. Data come from a Scanco vivaCT 40. Sites analyzed include femoral metaphysis, femoral diaphysis, and lumbar vertebra. Analyses include trabecular bone parameters, cortical bone parameters, and finite element analysis.
+License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
