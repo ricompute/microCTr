@@ -117,10 +117,10 @@ compare_genotypes <- function(data, type = NULL) {
                 dplyr::filter(Genotype == genotypes[2]) |>
                 dplyr::pull(var = m)
 
-            if (var.test(g1, g2)$p.val < 0.05) {
-                t <- t.test(g1, g2)
+            if (stats::var.test(g1, g2)$p.val < 0.05) {
+                t <- stats::t.test(g1, g2)
             } else {
-                t <- t.test(g1, g2, var.equal = TRUE)
+                t <- stats::t.test(g1, g2, var.equal = TRUE)
             }
 
             sig <- get_sig(t)
@@ -129,8 +129,8 @@ compare_genotypes <- function(data, type = NULL) {
                                Genotype = genotypes,
                                n = c(length(g1), length(g2)),
                                Mean = c(mean(g1), mean(g2)),
-                               SEM = c(sd(g1) / length(g1),
-                                       sd(g2) / length(g2)),
+                               SEM = c(stats::sd(g1) / sqrt(length(g1)),
+                                       stats::sd(g2) / sqrt(length(g2))),
                                P = c(NA, t$p.value),
                                Sig = c("", sig))
 

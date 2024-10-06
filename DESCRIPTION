@@ -13,5 +13,6 @@ Imports:
     dplyr,
     knitr,
     readr,
+    stats,
     tidyr,
     withr
