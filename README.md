@@ -24,7 +24,9 @@ pak::pak("ricompute/microCTr")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+Please see the [package website](https://ricompute.github.io/microCTr/)
+for details and more examples, including a vignette showing a complete
+analysis comparing two genotypes.
 
 ``` r
 library(microCTr)
