@@ -27,24 +27,24 @@ fea_measures <- c("S", "F.ult")
 #' Student's *t*-test.
 #'
 #' If `trabecular` bone data are supplied, the measures compared include:
-#'  * `BV/TV`
-#'  * `SMI`
-#'  * `Tb.N`
-#'  * `Tb.Th`
-#'  * `Tb.Sp`
+#'  - `BV/TV`
+#'  - `SMI`
+#'  - `Tb.N`
+#'  - `Tb.Th`
+#'  - `Tb.Sp`
 #'
 #' If `cortical` bone data are supplied, the measures compared include:
-#'  * `Ct.vBMD`
-#'  * `Ct.Th`
-#'  * `End.Circ`
-#'  * `Peri.Circ`
-#'  * `Ct.Po`
-#'  * `Ct.Po.V`
+#'  - `Ct.vBMD`
+#'  - `Ct.Th`
+#'  - `End.Circ`
+#'  - `Peri.Circ`
+#'  - `Ct.Po`
+#'  - `Ct.Po.V`
 #'
 #' If finite element analysis (`fea`) data are supplied, the measures compared
 #' include:
-#'  * `S`
-#'  * `F.ult`
+#'  - `S`
+#'  - `F.ult`
 #'
 #' @param data Trabecular bone microCT data in a data frame, formatted as is the
 #'   output of [read_trabecular_csv()], [read_cortical_csv()], or
