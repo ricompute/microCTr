@@ -17,6 +17,9 @@ containing the names of all example files.
 microCTr comes bundled with some example files in its \code{inst/extdata}
 directory. This function makes them easy to access.
 }
+\details{
+Adapted from \code{\link[readxl:readxl_example]{readxl::readxl_example()}}.
+}
 \examples{
 microCTr_example()
 microCTr_example("example-key.csv")

@@ -3,6 +3,8 @@
 #' microCTr comes bundled with some example files in its `inst/extdata`
 #' directory. This function makes them easy to access.
 #'
+#' Adapted from [readxl::readxl_example()].
+#'
 #' @param path Name of file. If `NULL`, the example files will be listed.
 #'
 #' @return A string containing the name of the file, or a character vector
