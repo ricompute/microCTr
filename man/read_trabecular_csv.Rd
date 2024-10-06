@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_data.R
 \name{read_trabecular_csv}
 \alias{read_trabecular_csv}
-\title{Read in trabecular data}
+\title{Read in trabecular bone data}
 \usage{
 read_trabecular_csv(file, key, ...)
 }
@@ -10,9 +10,9 @@ read_trabecular_csv(file, key, ...)
 \item{file}{The file path to the \code{trabecular.csv} file.}
 
 \item{key}{The \code{key} object containing sample information, as created by
-the \code{read_key_csv()} function.}
+the \code{\link[=read_key_csv]{read_key_csv()}} function.}
 
-\item{...}{Additional arguments passed on to \code{readr::read_csv()}.}
+\item{...}{Additional arguments passed on to \code{\link[readr:read_delim]{readr::read_csv()}}.}
 }
 \value{
 A tibble/data frame containing trabecular bone data. For example:
@@ -28,13 +28,12 @@ A tibble/data frame containing trabecular bone data. For example:
 }\if{html}{\out{</div>}}
 }
 \description{
-This is a wrapper around \code{readr::read_csv()} to read in and process
+This is a wrapper around \code{\link[readr:read_delim]{readr::read_csv()}} to read in and process
 trabecular bone microCT data from a \code{trabecular.csv} file. It uses a
 \code{key} object to look up and add sex, genotype, and site information.
 }
 \examples{
-key <- microCTr_example("example-key.csv") |>
-    read_key_csv()
-trab <- microCTr_example("example-trabecular.csv") |>
-    read_trabecular_csv(key = key)
+key <- read_key_csv(microCTr_example("example-key.csv"))
+trab <- read_trabecular_csv(microCTr_example("example-trabecular.csv"),
+                                         key = key)
 }

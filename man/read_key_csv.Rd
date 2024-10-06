@@ -12,7 +12,7 @@ read_key_csv(file, sites = c("Spine", "Met", "Dia"), ...)
 \item{sites}{A character vector of the sites scanned, included as columns in
 the \code{key.csv}.}
 
-\item{...}{Additional arguments passed on to \code{readr::read_csv()}.}
+\item{...}{Additional arguments passed on to \code{\link[readr:read_delim]{readr::read_csv()}}.}
 }
 \value{
 A tibble/data frame containing the sample definitions.
@@ -29,7 +29,7 @@ For example:
 }\if{html}{\out{</div>}}
 }
 \description{
-This is a wrapper around \code{readr::read_csv()} to read in and process
+This is a wrapper around \code{\link[readr:read_delim]{readr::read_csv()}} to read in and process
 a \code{key.csv} file that contains the lookup table defining each sample's
 AS (key registry) number, sex, genotype (if applicable), treatment (if
 applicable), sample number, and the measure number of each site scanned.

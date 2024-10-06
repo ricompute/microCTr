@@ -1,6 +1,6 @@
 #' Read in a sample definition key file
 #'
-#' This is a wrapper around `readr::read_csv()` to read in and process
+#' This is a wrapper around [readr::read_csv()] to read in and process
 #' a `key.csv` file that contains the lookup table defining each sample's
 #' AS (key registry) number, sex, genotype (if applicable), treatment (if
 #' applicable), sample number, and the measure number of each site scanned.
@@ -8,7 +8,7 @@
 #' @param file The file path to the `key.csv` file.
 #' @param sites A character vector of the sites scanned, included as columns in
 #'   the `key.csv`.
-#' @param ... Additional arguments passed on to `readr::read_csv()`.
+#' @param ... Additional arguments passed on to [readr::read_csv()].
 #'
 #' @return A tibble/data frame containing the sample definitions.
 #'   For example:
@@ -35,16 +35,16 @@ read_key_csv <- function(file, sites = c("Spine", "Met", "Dia"), ...) {
     key
 }
 
-#' Read in trabecular data
+#' Read in trabecular bone data
 #'
-#' This is a wrapper around `readr::read_csv()` to read in and process
+#' This is a wrapper around [readr::read_csv()] to read in and process
 #' trabecular bone microCT data from a `trabecular.csv` file. It uses a
 #' `key` object to look up and add sex, genotype, and site information.
 #'
 #' @param file The file path to the `trabecular.csv` file.
 #' @param key The `key` object containing sample information, as created by
-#'   the `read_key_csv()` function.
-#' @param ... Additional arguments passed on to `readr::read_csv()`.
+#'   the [read_key_csv()] function.
+#' @param ... Additional arguments passed on to [readr::read_csv()].
 #'
 #' @return A tibble/data frame containing trabecular bone data. For example:
 #'   ```
@@ -61,10 +61,9 @@ read_key_csv <- function(file, sites = c("Spine", "Met", "Dia"), ...) {
 #' @export
 #'
 #' @examples
-#' key <- microCTr_example("example-key.csv") |>
-#'     read_key_csv()
-#' trab <- microCTr_example("example-trabecular.csv") |>
-#'     read_trabecular_csv(key = key)
+#' key <- read_key_csv(microCTr_example("example-key.csv"))
+#' trab <- read_trabecular_csv(microCTr_example("example-trabecular.csv"),
+#'                                          key = key)
 read_trabecular_csv <- function(file, key, ...) {
     trab <- readr::read_csv(file, ...) |>
         dplyr::select(SampNo, MeasNo,
@@ -80,6 +79,86 @@ read_trabecular_csv <- function(file, key, ...) {
                       Tb.Sp = `DT-Tb.Sp`) |>
         dplyr::select(SampNo, MeasNo, `BV/TV`, SMI, Tb.N, Tb.Th, Tb.Sp) |>
         dplyr::right_join(key, y = _,
-                          by = dplyr::join_by(SampNo, MeasNo))
+                          by = dplyr::join_by(SampNo, MeasNo)) |>
+        print(n = 24)
     trab
+}
+
+read_twice1_csv <- function(twice1_file, key, ...) {
+    twice1 <- readr::read_csv(twice1_file, ...) |>
+        dplyr::select(SampNo, MeasNo,
+                      `VOX-TV`) |>
+        dplyr::rename(TV.1 = `VOX-TV`) |>
+        dplyr::left_join(dplyr::filter(key, Site != "Spine"), y = _,
+                         by = dplyr::join_by(SampNo, MeasNo))
+    twice1
+}
+
+read_twice2_csv <- function(twice2_file, key, ...) {
+    twice2 <- readr::read_csv(twice2_file, ...) |>
+        dplyr::select(SampNo, MeasNo,
+                      `VOX-TV`, `VOX-BV`, `VOX-BV/TV`, Mean2) |>
+        dplyr::rename(TV.2 = `VOX-TV`,
+                      BV = `VOX-BV`,
+                      `BV/TV` = `VOX-BV/TV`) |>
+        dplyr::left_join(dplyr::filter(key, Site != "Spine"), y = _,
+                         by = dplyr::join_by(SampNo, MeasNo))
+}
+
+#' Read in cortical bone data
+#'
+#' This is a wrapper around [readr::read_csv()] to read in and process
+#' cortical bone microCT data from two files: a `twice1.csv` and a
+#' `twice2.csv` file. It uses a `key` object to look up and add sex,
+#' genotype, and site information.
+#'
+#' @param twice1_file The file path to the `twice1.csv` file.
+#' @param twice2_file The file path to the `twice2.csv` file.
+#' @param key The `key` object containing sample information, as created
+#'   by the [read_key_csv()] function.
+#' @param ... Additional arguments passed on to [readr::read_csv()].
+#'
+#' @return A tibble/data frame containing cortical bone data. For example:
+#'   ```
+#'   |   AS|Sex |Genotype | SampNo|Site | MeasNo|  Ct.vBMD| Ct.Th| End.Circ| Peri.Circ| Ct.Po| Ct.Po.V|
+#'   |----:|:---|:--------|------:|:----|------:|--------:|-----:|--------:|---------:|-----:|-------:|
+#'   | 1365|M   |Cre      |  10778|Met  |  31710|  937.049| 0.129|    5.533|     6.342|  0.41|   0.002|
+#'   | 1365|M   |Cre      |  10778|Dia  |  31712| 1114.873| 0.220|    3.963|     5.343|  0.11|   0.001|
+#'   | 1366|F   |Cre      |  10779|Met  |  31713| 1011.473| 0.183|    4.337|     5.485|  0.26|   0.001|
+#'   | 1366|F   |Cre      |  10779|Dia  |  31715| 1133.066| 0.232|    3.250|     4.705|  0.10|   0.000|
+#'   | 1367|F   |Cre;fl   |  10780|Met  |  31716|  994.868| 0.145|    4.892|     5.806|  0.37|   0.002|
+#'   | 1367|F   |Cre;fl   |  10780|Dia  |  31718| 1137.300| 0.209|    3.514|     4.827|  0.14|   0.001|
+#'   ```
+#'
+#' @export
+#'
+#' @examples
+#' key <- read_key_csv(microCTr_example("example-key.csv"))
+#' cort <- read_cortical_csv(microCTr_example("example-twice1.csv"),
+#'                           microCTr_example("example-twice2.csv"),
+#'                           key)
+read_cortical_csv <- function(twice1_file, twice2_file, key, ...) {
+    twice1 <- read_twice1_csv(twice1_file, key, ...)
+    twice2 <- read_twice2_csv(twice2_file, key, ...)
+
+    cort <- dplyr::right_join(twice1, twice2,
+                              by = dplyr::join_by(AS, Sex, Genotype,
+                                                  SampNo, Site, MeasNo)) |>
+        dplyr::mutate(Peri.V = TV.1,
+                      Peri.Ar = Peri.V / (50 * 0.0105),
+                      Peri.Rad = sqrt(Peri.Ar / pi),
+                      Ct.V = TV.2,
+                      Ct.Ar = Ct.V / (50 * 0.0105),
+                      End.Ar = Peri.Ar - Ct.Ar,
+                      End.Rad = sqrt(End.Ar / pi),
+                      Ct.Po = 1 - `BV/TV`,
+                      Peri.Circ = 2 * pi * Peri.Rad,
+                      End.Circ = 2 * pi * End.Rad,
+                      Ct.Th = Peri.Rad - End.Rad,
+                      Ct.Po.V = Ct.Po * Ct.V,
+                      Ct.vBMD = Mean2) |>
+        dplyr::mutate(Ct.Po = Ct.Po * 100) |>
+        dplyr::select(AS, Sex, Genotype, SampNo, Site, MeasNo,
+                      Ct.vBMD, Ct.Th, End.Circ, Peri.Circ, Ct.Po, Ct.Po.V)
+    cort
 }
