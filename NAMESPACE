@@ -3,4 +3,5 @@
 export(microCTr_example)
 export(read_cortical_csv)
 export(read_key_csv)
+export(read_mfe_csv)
 export(read_trabecular_csv)

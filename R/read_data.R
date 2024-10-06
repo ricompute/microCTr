@@ -162,3 +162,42 @@ read_cortical_csv <- function(twice1_file, twice2_file, key, ...) {
                       Ct.vBMD, Ct.Th, End.Circ, Peri.Circ, Ct.Po, Ct.Po.V)
     cort
 }
+
+#' Read in finite element analysis data
+#'
+#' This is a wrapper around [readr::read_csv()] to read in and process
+#' finite element analysis microCT data from a `mfe.csv` file. It uses
+#' a `key` object to look up and add sex, genotype, and site information.
+#'
+#' @param file The file path to the `mfe.csv` file.
+#' @param key The `key` object containing sample information, as created
+#'   by the [read_key_csv()] function.
+#' @param ... Additional arguments passed on to [readr::read_csv()].
+#'
+#' @return A tibble/data frame containing finite element analysis data.
+#'   For example:
+#'   ```
+#'   |   AS|Sex |Genotype | SampNo|Site  | MeasNo|       S|  F.ult|
+#'   |----:|:---|:--------|------:|:-----|------:|-------:|------:|
+#'   | 1365|M   |Cre      |  10778|Spine |  31711| 11480.0| 32.257|
+#'   | 1365|M   |Cre      |  10778|Met   |  31710| 19034.1| 57.483|
+#'   | 1365|M   |Cre      |  10778|Dia   |  31712| 25405.7| 79.100|
+#'   | 1366|F   |Cre      |  10779|Spine |  31714| 12449.0| 34.213|
+#'   | 1366|F   |Cre      |  10779|Met   |  31713| 20679.9| 62.022|
+#'   | 1366|F   |Cre      |  10779|Dia   |  31715| 22832.0| 70.721|
+#'
+#' @export
+#'
+#' @examples
+#' key <- read_key_csv(microCTr_example("example-key.csv"))
+#' mfe <- read_mfe_csv(microCTr_example("example-mfe.csv"),
+#'                                      key)
+read_mfe_csv <- function(file, key, ...) {
+    mfe <- readr::read_csv(file, ...) |>
+        dplyr::select(SampNo, MeasNo,
+                      S, F.ult) |>
+        dplyr::mutate(F.ult = -1 * F.ult) |>
+        dplyr::right_join(key, y = _,
+                          by = dplyr::join_by(SampNo, MeasNo))
+    mfe
+}
