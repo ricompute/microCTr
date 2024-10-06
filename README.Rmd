@@ -1,0 +1,55 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# microCTr
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+This packages contains functions to read in and analyze microCT data as
+currently performed in the Khosla Lab. Data come from a Scanco vivaCT 40. Sites
+analyzed include femoral metaphysis, femoral diaphysis, and lumbar vertebra.
+Analyses include trabecular bone parameters, cortical bone parameters, and
+finite element analysis.
+    
+
+## Installation
+
+You can install the development version of microCTr from [GitHub](https://github.com/ricompute/microCTr) with:
+
+``` r
+# install.packages("pak")
+pak::pak("ricompute/microCTr")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(microCTr)
+
+key <- read_key_csv(microCTr_example("example-key.csv"))
+
+trab <- read_trabecular_csv(microCTr_example("example-trabecular.csv"),
+                            key)
+
+F.Met.Trab <- trab |> dplyr::filter(Site == "Met") |> compare_genotypes()
+```
+
+```{r print, results = "asis"}
+print_results(F.Met.Trab)
+```
+
