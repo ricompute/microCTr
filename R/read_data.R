@@ -79,8 +79,7 @@ read_trabecular_csv <- function(file, key, ...) {
                       Tb.Sp = `DT-Tb.Sp`) |>
         dplyr::select(SampNo, MeasNo, `BV/TV`, SMI, Tb.N, Tb.Th, Tb.Sp) |>
         dplyr::right_join(key, y = _,
-                          by = dplyr::join_by(SampNo, MeasNo)) |>
-        print(n = 24)
+                          by = dplyr::join_by(SampNo, MeasNo))
     trab
 }
 
