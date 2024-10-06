@@ -40,8 +40,8 @@
 #' @export
 #'
 #' @examples
-#' key <- read_key_csv(microCT_example("example-key.csv"))
-#' trab <- read_trabecular_csv(microCT_example("example-trabecular.csv"),
+#' key <- read_key_csv(microCTr_example("example-key.csv"))
+#' trab <- read_trabecular_csv(microCTr_example("example-trabecular.csv"),
 #'                             key)
 #' print_data(trab |> dplyr::filter(Site == "Met"))
 print_data <- function(data, ...) {
