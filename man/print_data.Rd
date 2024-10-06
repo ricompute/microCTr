@@ -43,7 +43,9 @@ sex contained in the \code{data} supplied. For example:
 }
 \description{
 This is a wrapper around \code{\link[knitr:kable]{knitr::kable()}} to print out bone microCT
-data at one site by sex for use in an R Markdown document.
+data at one site by sex for use in an R Markdown document. A code
+chunk containing this function should probably have the \code{results = "asis"}
+option set to allow for pretty formatting.
 }
 \examples{
 key <- read_key_csv(microCT_example("example-key.csv"))

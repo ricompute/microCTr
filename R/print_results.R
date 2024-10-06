@@ -1,7 +1,9 @@
 #' Print bone microCT data
 #'
 #' This is a wrapper around [knitr::kable()] to print out bone microCT
-#' data at one site by sex for use in an R Markdown document.
+#' data at one site by sex for use in an R Markdown document. A code
+#' chunk containing this function should probably have the `results = "asis"`
+#' option set to allow for pretty formatting.
 #'
 #' @param data A data frame containing bone microCT data, formatted as is the
 #'   output of [read_trabecular_csv()], [read_cortical_csv()], or
@@ -52,5 +54,86 @@ print_data <- function(data, ...) {
                                dplyr::arrange(Genotype),
                            ...))
         cat("\n\n")
+    }
+}
+
+#' Print bone mciroCT comparison analysis results
+#'
+#' This function is a wraps and extends [knitr::kable()] to format and print the
+#' results of bone microCT comparison analyses at one site by sex for use in an
+#' R Markdown document. A code chunk containing this function should probably
+#' have the `results = "asis"` option to allow pretty formatting. Any `NA`
+#' values are printed as an empty string.
+#'
+#' @param results A list of microCT comparison results, formatted as is the
+#'   output of [compare_genotypes()].
+#' @param ... Additional arguments passed on to [knitr::kable()]. This function
+#'   uses a local default of `digits = 3` to specify how many significant digits
+#'   to print. This can be modified by passing a user specified `digits` value.
+#'
+#' @return Text output which is by default a Pandoc markdown pipe table for each
+#'   measure and each sex analyzed. If two sexes are analyzed, Pandoc fenced div
+#'   syntax is used to print the tables in two columns by sex. For example:
+#'   ```
+#'   :::: {style="display: flex;"}
+#'
+#'   ::: {}
+#'
+#'   **BV/TV**
+#'
+#'   |Sex |Genotype |  n| Mean|  SEM|     P|Sig |
+#'   |:---|:--------|--:|----:|----:|-----:|:---|
+#'   |M   |Cre      |  3| 18.5| 1.58|      |    |
+#'   |M   |Cre;fl   |  3| 19.9| 1.11| 0.701|    |
+#'
+#'
+#'   :::
+#'
+#'   ::: {}
+#'
+#'   **BV/TV**
+#'
+#'   |Sex |Genotype |  n| Mean|   SEM|     P|Sig |
+#'   |:---|:--------|--:|----:|-----:|-----:|:---|
+#'   |F   |Cre      |  3| 18.3| 1.041|      |    |
+#'   |F   |Cre;fl   |  3| 17.1| 0.936| 0.656|    |
+#'
+#'
+#'   :::
+#'
+#'   ::::
+#' @export
+#'
+#' @examples
+#' key <- read_key_csv(microCTr_example("example-key.csv"))
+#' trab <- read_trabecular_csv(microCTr_example("example-trabecular.csv"),
+#'                             key)
+#' Sp.trab <- trab |> dplyr::filter(Site == "Spine") |> compare_genotypes()
+#' print_results(Sp.trab)
+print_results <- function(results, ...) {
+    withr::local_options(list(digits = 3, knitr.kable.NA = ""))
+    sexes <- names(results[[1]])
+    if (length(sexes) == 2) {
+        cat(":::: {style=\"display: flex;\"}\n\n")
+        for (j in 1:length(sexes)) {
+            cat("::: {}\n\n")
+            for (i in 1:length(results)) {
+                cat("**", names(results)[i], "**", sep = "")
+                print(knitr::kable(results[[i]][sexes[j]], ...))
+                cat("\n\n")
+            }
+            cat(":::\n\n")
+        }
+        cat("::::\n\n")
+    } else if (length(sexes) == 1) {
+        for (j in 1:length(sexes)) {
+            for (i in 1:length(results)) {
+                cat("**", names(results)[i], "**", sep = "")
+                print(knitr::kable(results[[i]][sexes[j]], ...))
+                cat("\n\n")
+            }
+        }
+    } else {
+        stop("The number of sexes is not 1 or 2!")
     }
 }
