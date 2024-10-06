@@ -3,7 +3,7 @@ Title: Analyze microCT Data
 Version: 0.0.0.9000
 Authors@R: 
     person("Richard", "Lindsey", , "richard.c.lindsey@ricompute.com", 
-    role = c("aut", "cre"), comment = c(ORCID = "0000-0001-9911-4136"))
+    role = c("aut", "cre", "cph"), comment = c(ORCID = "0000-0001-9911-4136"))
 Description: This packages contains functions to read in and analyze microCT 
     data as currently performed in the Khosla Lab. Data come from a Scanco 
     vivaCT 40. Sites analyzed include femoral metaphysis, femoral diaphysis, and 
