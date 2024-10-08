@@ -66,12 +66,11 @@ plot_genotypes <- function(data, type = NULL) {
             sig <- get_sig(t)
 
             r <- dplyr::tibble(Sex = s,
-                               Genotype = genotypes[2],
+                               Genotype = genotypes,
                                Measure = m,
-                               Value = max(c(g1, g2)) +
-                                   (max(sd(g1) / sqrt(length(g1)),
-                                        sd(g2) / sqrt(length(g2)))),
-                               P = t$p.value,
+                               Value = c(max(g1) + 1.5 * (sd(g1) / sqrt(length(g1))),
+                                         max(g2) + 1.5 * (sd(g2) / sqrt(length(g2)))),
+                               P = c(NA, t$p.value),
                                Sig = c("", sig))
 
             res <- dplyr::bind_rows(res,
@@ -87,15 +86,17 @@ plot_genotypes <- function(data, type = NULL) {
                                 names_to = "Measure",
                                 values_to = "Value")
 
-        p <- ggplot2::ggplot(dat,
-                             ggplot2::aes(x = Genotype, y = Value)) +
-            ggplot2::facet_wrap(ggplot2::vars(Measure), scales = "free_y") +
+        p <- dat |>
+            ggplot2::ggplot(ggplot2::aes(x = Genotype, y = Value)) +
+            ggplot2::facet_wrap(ggplot2::vars(factor(Measure,
+                                                     levels = measures)),
+                                scales = "free_y") +
             ggplot2::geom_boxplot() +
             ggplot2::geom_point(position = ggplot2::position_jitter(width = 0.2)) +
             ggplot2::expand_limits(y = 0) +
-            ggplot2::geom_text(data = res_by_sex[s],
+            ggplot2::geom_text(data = res_by_sex[[s]],
                                mapping = ggplot2::aes(x = Genotype, y = Value,
-                                                      label = Sig))
+                                                      label = Sig), size = 9)
 
         plot_by_sex[[s]] <- p
     }
