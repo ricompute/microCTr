@@ -1,4 +1,34 @@
-plot_genotypes <- function(data, type = NULL) {
+#' Plot bone microCT data by genotype
+#'
+#' This function takes in bone microCT data and produces boxplots comparing two
+#' genotypes.
+#'
+#' If the two genotypes are significantly different, statistical significance
+#' will be indicated with `"*"` if *P* < 0.05, `"**"` if *P* < 0.01, or `"***"`
+#' if *P* < 0.001.
+#'
+#' @param data A tibble/data frame containing bone microCT data, formatted as is
+#'   the output of [read_trabecular_csv()], [read_cortical_csv()], or
+#'   [read_mfe_csv()].
+#' @param type A string indicating the type of data supplied. Options include
+#'   `trabecular`, `cortical`, or `fea`. Alternatively, a specific microCT
+#'   measure of interest can be specified (e.g., `Ct.vBMD`). Defaults to `NULL`,
+#'   in which case the function will try to figure out which type of data it is.
+#' @param title A string indicating what type of title the plots should have.
+#'   Defaults to `sex`, which is currently the only option implemented. To
+#'   remove titles from the plots, set `title` to `NULL`.
+#'
+#' @return A list containing [ggplot2::ggplot()] objects for each analyzed. To
+#'   print each plot without printing the list index, see [print_plots()].
+#' @export
+#'
+#' @examples
+#' key <- read_key_csv(microCTr_example("example-key.csv"))
+#' cort <- read_cortical_csv(microCTr_example("example-twice1.csv"),
+#'                           microCTr_example("example-twice2.csv"),
+#'                           key)
+#' plot_genotypes(cort |> dplyr::filter(Site == "Dia"))
+plot_genotypes <- function(data, type = NULL, title = "sex") {
     if (is.null(type)) {
         if ("Tb.N" %in% names(data)) {
             measures <- trabecular_measures
@@ -16,9 +46,9 @@ plot_genotypes <- function(data, type = NULL) {
         measures <- cortical_measures
     } else if (type == "fea") {
         measures <- fea_measures
-    } else if ((length(type) == 1) & ((type %in% trabecular_measures) |
-                                      (type %in% cortical_measures) |
-                                      (type %in% fea_measures))) {
+    } else if ((length(type) == 1) & (type %in% c(trabecular_measures,
+                                                   cortical_measures,
+                                                   fea_measures))) {
         measures <- type
     } else {
         stop("Type of data must be trabecular, cortical, or fea.",
@@ -90,7 +120,8 @@ plot_genotypes <- function(data, type = NULL) {
             ggplot2::ggplot(ggplot2::aes(x = Genotype, y = Value)) +
             ggplot2::facet_wrap(ggplot2::vars(factor(Measure,
                                                      levels = measures)),
-                                scales = "free_y") +
+                                scales = "free_y",
+                                nrow = 1) +
             ggplot2::geom_boxplot() +
             ggplot2::geom_point(position = ggplot2::position_jitter(width = 0.2)) +
             ggplot2::expand_limits(y = 0) +
@@ -98,7 +129,35 @@ plot_genotypes <- function(data, type = NULL) {
                                mapping = ggplot2::aes(x = Genotype, y = Value,
                                                       label = Sig), size = 9)
 
+        if (!is.null(title)) {
+            if (title == "sex") {
+                p <- p + ggplot2::ggtitle(paste("Sex:", s))
+            }
+        }
+
         plot_by_sex[[s]] <- p
     }
     plot_by_sex
+}
+
+#' Print a list of plots
+#'
+#' This function iterates through a list of plots and prints them (without
+#' printing the list index).
+#'
+#' @param plots A list of [ggplot2::ggplot()] objects.
+#'
+#' @return Returns NULL, since this function is used for its side effects.
+#' @export
+#'
+#' @examples
+#' key <- read_key_csv(microCTr_example("example-key.csv"))
+#' cort <- read_cortical_csv(microCTr_example("example-twice1.csv"),
+#'                           microCTr_example("example-twice2.csv"),
+#'                           key)
+#' plot_genotypes(cort |> dplyr::filter(Site == "Dia")) |> print_plots()
+print_plots <- function(plots) {
+    for (p in plots) {
+        print(p)
+    }
 }
