@@ -1,5 +1,5 @@
 ---
-title: "comparing-genotypes"
+title: "Comparing Genotypes"
 output: 
     rmarkdown::html_vignette:
         toc: true
@@ -7,7 +7,7 @@ output:
         highlight: tango
         tabset: true
 vignette: >
-  %\VignetteIndexEntry{comparing-genotypes}
+  %\VignetteIndexEntry{Comparing Genotypes}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -15,7 +15,9 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  fig.width = 6,
+  fig.height = 3
 )
 ```
 
@@ -69,6 +71,12 @@ F.Met.Tb |>
     print_results()
 ```
 
+### Plots
+
+```{r fig.width = 5}
+plot_genotypes(F.Met.Tb) |> print_plots()
+```
+
 
 ## Cortical {.tabset}
 
@@ -97,6 +105,12 @@ F.Met.Ct |>
     print_results()
 ```
 
+### Plots
+
+```{r}
+plot_genotypes(F.Met.Ct) |> print_plots()
+```
+
 
 ## Finite Element Analysis {.tabset}
 
@@ -123,6 +137,12 @@ F.Met.FEA |>
     mutate(Sex = "B") |> 
     compare_genotypes() |> 
     print_results()
+```
+
+### Plots
+
+```{r fig.width = 3}
+plot_genotypes(F.Met.FEA) |> print_plots()
 ```
 
 
@@ -155,6 +175,12 @@ F.Dia.Ct |>
     print_results()
 ```
 
+### Plots
+
+```{r}
+plot_genotypes(F.Dia.Ct) |> print_plots()
+```
+
 
 ## Finite Element Analysis {.tabset}
 
@@ -181,6 +207,12 @@ F.Dia.FEA |>
     mutate(Sex = "B") |> 
     compare_genotypes() |> 
     print_results()
+```
+
+### Plots
+
+```{r fig.width = 3}
+plot_genotypes(F.Dia.FEA) |> print_plots()
 ```
 
 
@@ -213,6 +245,12 @@ Spine.Tb |>
     print_results()
 ```
 
+### Plots
+
+```{r fig.width = 5}
+plot_genotypes(Spine.Tb) |> print_plots()
+```
+
 
 ## Finite Element Analysis {.tabset}
 
@@ -240,3 +278,10 @@ Spine.FEA |>
     compare_genotypes() |> 
     print_results()
 ```
+
+### Plots
+
+```{r fig.width = 3}
+plot_genotypes(Spine.FEA) |> print_plots()
+```
+
