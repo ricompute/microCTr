@@ -98,8 +98,8 @@ plot_genotypes <- function(data, type = NULL, title = "sex") {
             r <- dplyr::tibble(Sex = s,
                                Genotype = genotypes,
                                Measure = m,
-                               Value = c(max(g1) + 1.5 * (sd(g1) / sqrt(length(g1))),
-                                         max(g2) + 1.5 * (sd(g2) / sqrt(length(g2)))),
+                               Value = c(max(g1) + 1.5 * (stats::sd(g1) / sqrt(length(g1))),
+                                         max(g2) + 1.5 * (stats::sd(g2) / sqrt(length(g2)))),
                                P = c(NA, t$p.value),
                                Sig = c("", sig))
 
