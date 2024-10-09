@@ -23,15 +23,15 @@ library(here)
 ```
 
 ```{r read-data, collapse = TRUE}
-key <- read_key_csv(here::here("data", "key.csv"))
+key <- read_key_csv(here("data", "key.csv"))
 
-trab <- read_trabecular_csv(here::here("data", "trabecular.csv"), key)
+trab <- read_trabecular_csv(here("data", "trabecular.csv"), key)
 
-cort <- read_cortical_csv(here::here("data", "twice1.csv"), 
-                          here::here("data", "twice2.csv"), 
+cort <- read_cortical_csv(here("data", "twice1.csv"), 
+                          here("data", "twice2.csv"), 
                           key)
 
-mfe <- read_mfe_csv(here::here("data", "mfe.csv"), key)
+mfe <- read_mfe_csv(here("data", "mfe.csv"), key)
 ```
 
 # Femoral Metaphysis
