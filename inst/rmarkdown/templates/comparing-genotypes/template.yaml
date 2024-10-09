@@ -1,0 +1,5 @@
+name: Comparing Genotypes
+description: >
+   A standardized, pre-filled template for analyzing bone microCT data,
+   comparing two genotypes.
+create_dir: FALSE

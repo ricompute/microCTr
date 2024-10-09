@@ -1,0 +1,5 @@
+Name: microCT Genotype Comparison Setup
+Description: New Addin Description
+Binding: create_genotype_comparison
+Interactive: false
+

@@ -1,0 +1,289 @@
+---
+title: "Template Title"
+author: "Your Name"
+date: "The Date"
+output: 
+    html_document:
+        code_folding: hide
+        toc: true
+        toc_float: true
+        highlight: tango
+---
+
+```{r include = FALSE}
+knitr::opts_chunk$set(
+    fig.width = 6,
+    fig.height = 3
+)
+```
+
+```{r setup, collapse = TRUE}
+library(microCTr)
+library(dplyr)
+library(here)
+```
+
+```{r read-data, collapse = TRUE}
+key <- read_key_csv(here::here("data", "key.csv"))
+
+trab <- read_trabecular_csv(here::here("data", "trabecular.csv"), key)
+
+cort <- read_cortical_csv(here::here("data", "twice1.csv"), 
+                          here::here("data", "twice2.csv"), 
+                          key)
+
+mfe <- read_mfe_csv(here::here("data", "mfe.csv"), key)
+```
+
+# Femoral Metaphysis
+
+## Trabecular {.tabset}
+
+### Results
+
+```{r results = "asis"}
+F.Met.Tb <- trab |> 
+    filter(Site == "Met")
+
+F.Met.Tb_res <- compare_genotypes(F.Met.Tb)
+print_results(F.Met.Tb_res)
+```
+
+### Data
+
+```{r results = "asis"}
+print_data(F.Met.Tb)
+```
+
+### Combined Sexes
+
+```{r results = "asis"}
+F.Met.Tb |> 
+    mutate(Sex = "B") |> 
+    compare_genotypes() |> 
+    print_results()
+```
+
+### Plots
+
+```{r fig.width = 5}
+plot_genotypes(F.Met.Tb) |> print_plots()
+```
+
+
+## Cortical {.tabset}
+
+### Results
+
+```{r results = "asis"}
+F.Met.Ct <- cort |> 
+    filter(Site == "Met")
+
+F.Met.Ct_res <- compare_genotypes(F.Met.Ct)
+print_results(F.Met.Ct_res)
+```
+
+### Data
+
+```{r results = "asis"}
+print_data(F.Met.Ct)
+```
+
+### Combined Sexes
+
+```{r results = "asis"}
+F.Met.Ct |> 
+    mutate(Sex = "B") |> 
+    compare_genotypes() |> 
+    print_results()
+```
+
+### Plots
+
+```{r}
+plot_genotypes(F.Met.Ct) |> print_plots()
+```
+
+
+## Finite Element Analysis {.tabset}
+
+### Results
+
+```{r results = "asis"}
+F.Met.FEA <- mfe |> 
+    filter(Site == "Met")
+
+F.Met.FEA_res <- compare_genotypes(F.Met.FEA)
+print_results(F.Met.FEA_res)
+```
+
+### Data
+
+```{r results = "asis"}
+print_data(F.Met.FEA)
+```
+
+### Combined Sexes
+
+```{r results = "asis"}
+F.Met.FEA |> 
+    mutate(Sex = "B") |> 
+    compare_genotypes() |> 
+    print_results()
+```
+
+### Plots
+
+```{r fig.width = 3}
+plot_genotypes(F.Met.FEA) |> print_plots()
+```
+
+
+# Femoral Diaphysis
+
+## Cortical {.tabset}
+
+### Results
+
+```{r results = "asis"}
+F.Dia.Ct <- cort |> 
+    filter(Site == "Dia")
+
+F.Dia.Ct_res <- compare_genotypes(F.Dia.Ct)
+print_results(F.Dia.Ct_res)
+```
+
+### Data
+
+```{r results = "asis"}
+print_data(F.Dia.Ct)
+```
+
+### Combined Sexes
+
+```{r results = "asis"}
+F.Dia.Ct |> 
+    mutate(Sex = "B") |> 
+    compare_genotypes() |> 
+    print_results()
+```
+
+### Plots
+
+```{r}
+plot_genotypes(F.Dia.Ct) |> print_plots()
+```
+
+
+## Finite Element Analysis {.tabset}
+
+### Results
+
+```{r results = "asis"}
+F.Dia.FEA <- mfe |> 
+    filter(Site == "Dia")
+
+F.Dia.FEA_res <- compare_genotypes(F.Dia.FEA)
+print_results(F.Dia.FEA_res)
+```
+
+### Data
+
+```{r results = "asis"}
+print_data(F.Dia.FEA)
+```
+
+### Combined Sexes
+
+```{r results = "asis"}
+F.Dia.FEA |> 
+    mutate(Sex = "B") |> 
+    compare_genotypes() |> 
+    print_results()
+```
+
+### Plots
+
+```{r fig.width = 3}
+plot_genotypes(F.Dia.FEA) |> print_plots()
+```
+
+
+# Lumbar Vertebra
+
+## Trabecular {.tabset}
+
+### Results
+
+```{r results = "asis"}
+Spine.Tb <- trab |> 
+    filter(Site == "Spine")
+
+Spine.Tb_res <- compare_genotypes(Spine.Tb)
+print_results(Spine.Tb_res)
+```
+
+### Data
+
+```{r results = "asis"}
+print_data(Spine.Tb)
+```
+
+### Combined Sexes
+
+```{r results = "asis"}
+Spine.Tb |> 
+    mutate(Sex = "B") |> 
+    compare_genotypes() |> 
+    print_results()
+```
+
+### Plots
+
+```{r fig.width = 5}
+plot_genotypes(Spine.Tb) |> print_plots()
+```
+
+
+## Finite Element Analysis {.tabset}
+
+### Results
+
+```{r results = "asis"}
+Spine.FEA <- mfe |> 
+    filter(Site == "Spine")
+
+Spine.FEA_res <- compare_genotypes(Spine.FEA)
+print_results(Spine.FEA_res)
+```
+
+### Data
+
+```{r results = "asis"}
+print_data(Spine.FEA)
+```
+
+### Combined Sexes
+
+```{r results = "asis"}
+Spine.FEA |> 
+    mutate(Sex = "B") |> 
+    compare_genotypes() |> 
+    print_results()
+```
+
+### Plots
+
+```{r fig.width = 3}
+plot_genotypes(Spine.FEA) |> print_plots()
+```
+
+
+# Session Info
+
+Time this report was most recently updated: `r format(Sys.time(), '%c')`
+
+```{r collapse = TRUE}
+sessioninfo::session_info()
+```
+
