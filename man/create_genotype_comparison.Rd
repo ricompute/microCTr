@@ -20,19 +20,9 @@ Returns \code{TRUE} if successful.
 \description{
 This function assumes you are in a project root directory and creates an R
 Markdown file containing a pre-filled bone microCT analysis comparing two
-genotypes. It also creates a \code{data} directory containing template files into
-which to paste the microCT data. Additionally, the \code{data} directory contains
-a template \code{key.csv} file to specify the appropriate sample information.
-}
-\details{
-The \code{data} directory contains the following files:
-\itemize{
-\item \code{key.csv}
-\item \code{mfe.csv}
-\item \code{trabecular.csv}
-\item \code{twice1.csv}
-\item \code{twice2.csv}
-}
+genotypes. It also creates a \code{data.xlsx} template file into which to paste
+the microCT data. The \code{data.xlsx} file additionally has a \code{Key} sheet to
+specify the appropriate sample information.
 }
 \examples{
 \dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}

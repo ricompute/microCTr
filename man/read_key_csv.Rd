@@ -2,21 +2,28 @@
 % Please edit documentation in R/read_data.R
 \name{read_key_csv}
 \alias{read_key_csv}
+\alias{read_key_excel}
 \title{Read in a sample definition key file}
 \usage{
 read_key_csv(file, sites = c("Spine", "Met", "Dia"), ...)
+
+read_key_excel(file, sites = c("Spine", "Met", "Dia"), sheet = "Key", ...)
 }
 \arguments{
-\item{file}{The file path to the \code{key.csv} file.}
+\item{file}{The file path to the \code{key.csv} or \code{data.xlsx} file.}
 
 \item{sites}{A character vector of the sites scanned, included as columns in
-the \code{key.csv}.}
+the key file.}
 
-\item{...}{Additional arguments passed on to \code{\link[readr:read_delim]{readr::read_csv()}}.}
+\item{...}{Additional arguments passed on to \code{\link[readr:read_delim]{readr::read_csv()}} or
+\code{\link[readxl:read_excel]{readxl::read_excel()}}.}
+
+\item{sheet}{For \code{\link[=read_key_excel]{read_key_excel()}}, the sheet to read. Either a string (the
+name of a sheet), or an integer (the position of the sheet). Defaults to
+\code{"Key"}.}
 }
 \value{
-A tibble/data frame containing the sample definitions.
-For example:
+A tibble/data frame containing the sample definitions. For example:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{|   AS|Sex |Genotype | SampNo|Site  | MeasNo|
 |----:|:---|:--------|------:|:-----|------:|
@@ -29,11 +36,13 @@ For example:
 }\if{html}{\out{</div>}}
 }
 \description{
-This is a wrapper around \code{\link[readr:read_delim]{readr::read_csv()}} to read in and process
-a \code{key.csv} file that contains the lookup table defining each sample's
-AS (key registry) number, sex, genotype (if applicable), treatment (if
-applicable), sample number, and the measure number of each site scanned.
+These are wrappers around \code{\link[readr:read_delim]{readr::read_csv()}} and \code{\link[readxl:read_excel]{readxl::read_excel()}} to
+read in and process a \code{key.csv} file or \code{Key} sheet of a \code{data.xlsx} file
+that contains the lookup table defining each sample's AS (key registry)
+number, sex, genotype (if applicable), treatment (if applicable), sample
+number, and the measure number of each site scanned.
 }
 \examples{
 gen_key <- read_key_csv(mctr_ex("example-gen-key.csv"))
+gen_key <- read_key_excel(mctr_ex("example-genotype.xlsx"))
 }

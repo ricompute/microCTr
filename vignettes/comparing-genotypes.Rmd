@@ -29,17 +29,13 @@ library(dplyr)
 Read in data:
 
 ```{r read-data}
-key <- read_key_csv(mctr_ex("example-gen-key.csv"))
+key <- read_key_excel(mctr_ex("example-genotype.xlsx"))
 
-trab <- read_trabecular_csv(mctr_ex("example-trabecular.csv"),
-                            key)
+trab <- read_trabecular_excel(mctr_ex("example-genotype.xlsx"), key)
 
-cort <- read_cortical_csv(mctr_ex("example-twice1.csv"),
-                          mctr_ex("example-twice2.csv"),
-                          key)
+cort <- read_cortical_excel(mctr_ex("example-genotype.xlsx"), key)
 
-mfe <- read_mfe_csv(mctr_ex("example-mfe.csv"),
-                    key)
+mfe <- read_mfe_excel(mctr_ex("example-genotype.xlsx"), key)
 ```
 
 # Femoral Metaphysis
