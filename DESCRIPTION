@@ -23,7 +23,8 @@ Imports:
     sessioninfo,
     stats,
     tidyr,
-    withr
+    withr,
+    xfun
 Suggests: 
     rmarkdown
 VignetteBuilder: knitr

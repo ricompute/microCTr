@@ -12,6 +12,14 @@ params:
     data: "data.xlsx"
 ---
 
+# Background
+
+<!-- START BACKGROUND INFO -->
+
+
+
+<!-- END BACKGROUND INFO -->
+
 ```{r knitr-opts, include = FALSE}
 knitr::opts_chunk$set(
     fig.height = 3
@@ -33,6 +41,10 @@ cort <- read_cortical_excel(here(params$data), key)
 
 mfe <- read_mfe_excel(here(params$data), key)
 ```
+
+## Original Data
+
+`r xfun::embed_file(params$data, text = basename(params$data))`
 
 # Femoral Metaphysis
 
