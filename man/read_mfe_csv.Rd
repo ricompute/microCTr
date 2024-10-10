@@ -2,21 +2,29 @@
 % Please edit documentation in R/read_data.R
 \name{read_mfe_csv}
 \alias{read_mfe_csv}
+\alias{read_mfe_excel}
 \title{Read in finite element analysis data}
 \usage{
 read_mfe_csv(file, key, ...)
+
+read_mfe_excel(file, key, sheet = "MFE", ...)
 }
 \arguments{
-\item{file}{The file path to the \code{mfe.csv} file.}
+\item{file}{The file path to the \code{mfe.csv} or \code{mfe.xlsx} file.}
 
-\item{key}{The \code{key} object containing sample information, as created
-by the \code{\link[=read_key_csv]{read_key_csv()}} function.}
+\item{key}{The \code{key} object containing sample information, as created by the
+\code{\link[=read_key_csv]{read_key_csv()}} or \code{\link[=read_key_excel]{read_key_excel()}} function.}
 
-\item{...}{Additional arguments passed on to \code{\link[readr:read_delim]{readr::read_csv()}}.}
+\item{...}{Additional arguments passed on to \code{\link[readr:read_delim]{readr::read_csv()}} or
+\code{\link[readxl:read_excel]{readxl::read_excel()}}.}
+
+\item{sheet}{For \code{\link[=read_mfe_excel]{read_mfe_excel()}}, the sheet to read. Either a string (the
+name of a sheet), or an integer (the position of the sheet). Defaults to
+\code{"MFE"}.}
 }
 \value{
-A tibble/data frame containing finite element analysis data.
-For example:
+A tibble/data frame containing finite element analysis data. For
+example:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{|   AS|Sex |Genotype | SampNo|Site  | MeasNo|       S|  F.ult|
 |----:|:---|:--------|------:|:-----|------:|-------:|------:|
@@ -29,12 +37,15 @@ For example:
 }\if{html}{\out{</div>}}
 }
 \description{
-This is a wrapper around \code{\link[readr:read_delim]{readr::read_csv()}} to read in and process
-finite element analysis microCT data from a \code{mfe.csv} file. It uses
-a \code{key} object to look up and add sex, genotype, and site information.
+These are wrappers around \code{\link[readr:read_delim]{readr::read_csv()}} and \code{\link[readxl:read_excel]{readxl::read_excel()}} to
+read in and process finite element analysis microCT data from a \code{mfe.csv}
+file or the \code{MFE} sheet of a \code{data.xlsx} file. It uses a \code{key} object to look
+up and add sex, genotype, and site information.
 }
 \examples{
 gen_key <- read_key_csv(mctr_ex("example-gen-key.csv"))
 gen_mfe <- read_mfe_csv(mctr_ex("example-mfe.csv"),
-                                     gen_key)
+                                gen_key)
+gen_mfe <- read_mfe_excel(mctr_ex("example-genotype.xlsx"),
+                                  gen_key)
 }
