@@ -76,61 +76,13 @@
 <span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span></code></pre></div>
 <p>Read in data:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">key</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_key_csv.html">read_key_csv</a></span><span class="op">(</span><span class="fu"><a href="../reference/mctr_ex.html">mctr_ex</a></span><span class="op">(</span><span class="st">"example-gen-key.csv"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">12</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">7</span></span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> ","</span></span>
-<span><span class="co">#&gt; <span style="color: #BB0000;">chr</span> (2): Sex, Genotype</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">dbl</span> (5): AS, SampNo, Spine, Met, Dia</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
+<code class="sourceCode R"><span><span class="va">key</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_key_csv.html">read_key_excel</a></span><span class="op">(</span><span class="fu"><a href="../reference/mctr_ex.html">mctr_ex</a></span><span class="op">(</span><span class="st">"example-genotype.xlsx"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">trab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_trabecular_csv.html">read_trabecular_csv</a></span><span class="op">(</span><span class="fu"><a href="../reference/mctr_ex.html">mctr_ex</a></span><span class="op">(</span><span class="st">"example-trabecular.csv"</span><span class="op">)</span>,</span>
-<span>                            <span class="va">key</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">24</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">75</span></span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> ","</span></span>
-<span><span class="co">#&gt; <span style="color: #BB0000;">chr</span> (19): SampName, MeasDate, ListDate, Filename, Site, Energy-I-Code, Contr...</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">dbl</span> (51): SampNo, MeasNo, Integr.Time, Sigma, Support, Threshold, Unit, Data...</span></span>
-<span><span class="co">#&gt; <span style="color: #BBBB00;">lgl</span>  (5): S-DOB, S-Remark, Meas-Rmk, RAW-Label, IMA-Label</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
+<span><span class="va">trab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_trabecular_csv.html">read_trabecular_excel</a></span><span class="op">(</span><span class="fu"><a href="../reference/mctr_ex.html">mctr_ex</a></span><span class="op">(</span><span class="st">"example-genotype.xlsx"</span><span class="op">)</span>, <span class="va">key</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">cort</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_cortical_csv.html">read_cortical_csv</a></span><span class="op">(</span><span class="fu"><a href="../reference/mctr_ex.html">mctr_ex</a></span><span class="op">(</span><span class="st">"example-twice1.csv"</span><span class="op">)</span>,</span>
-<span>                          <span class="fu"><a href="../reference/mctr_ex.html">mctr_ex</a></span><span class="op">(</span><span class="st">"example-twice2.csv"</span><span class="op">)</span>,</span>
-<span>                          <span class="va">key</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">36</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">75</span></span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> ","</span></span>
-<span><span class="co">#&gt; <span style="color: #BB0000;">chr</span> (44): SampName, MeasDate, ListDate, Filename, Site, Energy-I-Code, Contr...</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">dbl</span> (26): SampNo, MeasNo, Integr.Time, Sigma, Support, Threshold, Unit, Data...</span></span>
-<span><span class="co">#&gt; <span style="color: #BBBB00;">lgl</span>  (5): S-DOB, S-Remark, Meas-Rmk, RAW-Label, IMA-Label</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">36</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">75</span></span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> ","</span></span>
-<span><span class="co">#&gt; <span style="color: #BB0000;">chr</span> (43): SampName, MeasDate, ListDate, Filename, Site, Energy-I-Code, Contr...</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">dbl</span> (27): SampNo, MeasNo, Integr.Time, Sigma, Support, Threshold, Unit, Data...</span></span>
-<span><span class="co">#&gt; <span style="color: #BBBB00;">lgl</span>  (5): S-DOB, S-Remark, Meas-Rmk, RAW-Label, IMA-Label</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
+<span><span class="va">cort</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_cortical_csv.html">read_cortical_excel</a></span><span class="op">(</span><span class="fu"><a href="../reference/mctr_ex.html">mctr_ex</a></span><span class="op">(</span><span class="st">"example-genotype.xlsx"</span><span class="op">)</span>, <span class="va">key</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">mfe</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_mfe_csv.html">read_mfe_csv</a></span><span class="op">(</span><span class="fu"><a href="../reference/mctr_ex.html">mctr_ex</a></span><span class="op">(</span><span class="st">"example-mfe.csv"</span><span class="op">)</span>,</span>
-<span>                    <span class="va">key</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">36</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">47</span></span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> ","</span></span>
-<span><span class="co">#&gt; <span style="color: #BB0000;">chr</span> (12): SampName, MeasDate, ListDate, Filename, Site, Energy-I-Code, Contr...</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">dbl</span> (30): SampNo, MeasNo, Integr.Time, Sigma, Support, Threshold, Unit, Data...</span></span>
-<span><span class="co">#&gt; <span style="color: #BBBB00;">lgl</span>  (5): S-DOB, S-Remark, Meas-Rmk, RAW-Label, IMA-Label</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span></code></pre></div>
+<span><span class="va">mfe</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_mfe_csv.html">read_mfe_excel</a></span><span class="op">(</span><span class="fu"><a href="../reference/mctr_ex.html">mctr_ex</a></span><span class="op">(</span><span class="st">"example-genotype.xlsx"</span><span class="op">)</span>, <span class="va">key</span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="femoral-metaphysis">Femoral Metaphysis<a class="anchor" aria-label="anchor" href="#femoral-metaphysis"></a>
 </h2>

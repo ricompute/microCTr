@@ -3,7 +3,7 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   comparing-genotypes: comparing-genotypes.html
-last_built: 2024-10-10T14:55Z
+last_built: 2024-10-10T16:44Z
 urls:
   reference: https://ricompute.github.io/microCTr/reference
   article: https://ricompute.github.io/microCTr/articles
