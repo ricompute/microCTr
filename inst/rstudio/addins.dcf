@@ -3,3 +3,7 @@ Description: New Addin Description
 Binding: create_genotype_comparison
 Interactive: false
 
+Name: microCT Treatment Comparison Setup
+Description: New Addin Description
+Binding: create_treatment_comparison
+Interactive: false

@@ -67,13 +67,8 @@ fea_measures <- c("S", "F.ult")
 #' gen_trab <- read_trabecular_csv(mctr_ex("example-trabecular.csv"),
 #'                             gen_key)
 #' Spine.Tb <- gen_trab |> dplyr::filter(Site == "Spine") |>
-#'                 compare_genotypes()
-#' tx_key <- read_key_csv(mctr_ex("example-tx-key.csv"))
-#' tx_trab <- read_trabecular_csv(mctr_ex("example-trabecular.csv"),
-#'                                tx_key)
-#' Spine.Tb <- tx_trab |> dplyr::filter(Site == "Spine") |>
-#'                 compare_treatments()
-compare_genotypes <- function(data, type = NULL) {
+#'                 compare_groups()
+compare_groups <- function(data, type = NULL) {
     if (is.null(type)) {
         if ("Tb.N" %in% names(data)) {
             measures <- trabecular_measures
@@ -98,105 +93,37 @@ compare_genotypes <- function(data, type = NULL) {
     res <- vector(mode = "list", length = length(measures))
     names(res) <- measures
 
-    genotypes <- data$Genotype |> unique()
-    if (length(genotypes) != 2) {
-        stop("There are not 2 genotpyes!")
-    }
-
-    sites <- data$Site |> unique()
-    if (length(sites) != 1) {
-        stop("This function expects there to be one Site in the data supplied.")
-    }
-
-    sexes <- data$Sex |> unique()
-    res_by_sex <- vector(mode = "list", length = length(sexes))
-    names(res_by_sex) <- sexes
-
-    for (m in measures) {
-        for (s in sexes) {
-            dat <- data |> dplyr::filter(Sex == s)
-
-            g1 <- dat |>
-                dplyr::filter(Genotype == genotypes[1]) |>
-                dplyr::pull(var = m)
-            g2 <- dat |>
-                dplyr::filter(Genotype == genotypes[2]) |>
-                dplyr::pull(var = m)
-
-            if (stats::var.test(g1, g2)$p.val < 0.05) {
-                t <- stats::t.test(g1, g2)
-            } else {
-                t <- stats::t.test(g1, g2, var.equal = TRUE)
-            }
-
-            sig <- get_sig(t)
-
-            r <- dplyr::tibble(Sex = s,
-                               Genotype = genotypes,
-                               n = c(length(g1), length(g2)),
-                               Mean = c(mean(g1), mean(g2)),
-                               SEM = c(stats::sd(g1) / sqrt(length(g1)),
-                                       stats::sd(g2) / sqrt(length(g2))),
-                               P = c(NA, t$p.value),
-                               Sig = c("", sig))
-
-            res_by_sex[[s]] <- r
-        }
-        res[[m]] <- res_by_sex
-    }
-    res
-}
-
-#' @rdname compare_genotypes
-#' @export
-compare_treatments <- function(data, type = NULL) {
-    if (is.null(type)) {
-        if ("Tb.N" %in% names(data)) {
-            measures <- trabecular_measures
-        } else if ("Ct.vBMD" %in% names(data)) {
-            measures <- cortical_measures
-        } else if ("F.ult" %in% names(data)) {
-            measures <- fea_measures
-        } else {
-            stop("Cannot figure out what type of data this is! ",
-                 "Please specify type as trabecular, cortical, or fea.")
-        }
-    } else if (type == "trabecular") {
-        measures <- trabecular_measures
-    } else if (type == "cortical") {
-        measures <- cortical_measures
-    } else if (type == "fea") {
-        measures <- fea_measures
+    if ("Genotype" %in% names(data)) {
+        dat <- data |> dplyr::rename(Group = Genotype)
+    } else if ("Treatment" %in% names(data)) {
+        dat <- data |> dplyr::rename(Group = Treatment)
     } else {
-        stop("Type of data must be trabecular, cortical, or fea.")
+        stop("There is no Group or Treatment column provided!")
     }
 
-    res <- vector(mode = "list", length = length(measures))
-    names(res) <- measures
-
-    treatments <- data$Treatment |> unique()
-    if (length(treatments) != 2) {
-        stop("There are not 2 treatments!")
+    groups <- dat$Group |> unique()
+    if (length(groups) != 2) {
+        stop("There are not 2 groups!")
     }
 
-    sites <- data$Site |> unique()
+    sites <- dat$Site |> unique()
     if (length(sites) != 1) {
         stop("This function expects there to be one Site in the data supplied.")
     }
 
-    sexes <- data$Sex |> unique()
+    sexes <- dat$Sex |> unique()
     res_by_sex <- vector(mode = "list", length = length(sexes))
     names(res_by_sex) <- sexes
 
     for (m in measures) {
         for (s in sexes) {
-            dat <- data |> dplyr::filter(Sex == s)
+            d <- dat |> dplyr::filter(Sex == s)
 
-            g1 <- dat |>
-                dplyr::filter(Treatment == treatments[1]) |>
+            g1 <- d |>
+                dplyr::filter(Group == groups[1]) |>
                 dplyr::pull(var = m)
-            g2 <- dat |>
-                dplyr::filter(Treatment == treatments[2]) |>
+            g2 <- d |>
+                dplyr::filter(Group == groups[2]) |>
                 dplyr::pull(var = m)
 
             if (stats::var.test(g1, g2)$p.val < 0.05) {
@@ -208,13 +135,19 @@ compare_treatments <- function(data, type = NULL) {
             sig <- get_sig(t)
 
             r <- dplyr::tibble(Sex = s,
-                               Treatment = treatments,
+                               Group = groups,
                                n = c(length(g1), length(g2)),
                                Mean = c(mean(g1), mean(g2)),
                                SEM = c(stats::sd(g1) / sqrt(length(g1)),
                                        stats::sd(g2) / sqrt(length(g2))),
                                P = c(NA, t$p.value),
                                Sig = c("", sig))
+
+            if ("Genotype" %in% names(data)) {
+                r <- r |> dplyr::rename(Genotype = Group)
+            } else if ("Treatment" %in% names(data)) {
+                r <- r |> dplyr::rename(Treatment = Group)
+            }
 
             res_by_sex[[s]] <- r
         }

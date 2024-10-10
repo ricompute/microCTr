@@ -266,7 +266,7 @@ read_cortical_excel <- function(data_file, key, twice1_sheet = "Twice1", twice2_
                                                       SampNo, Site, MeasNo))
     } else if ("Treatment" %in% names(key)) {
         cort <- dplyr::right_join(twice1, twice2,
-                                  by = dplyr::join_by(AS, Sex, Genotype,
+                                  by = dplyr::join_by(AS, Sex, Treatment,
                                                       SampNo, Site, MeasNo))
     }
 

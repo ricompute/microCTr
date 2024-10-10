@@ -8,7 +8,7 @@ print_results(results, ...)
 }
 \arguments{
 \item{results}{A list of microCT comparison results, formatted as is the
-output of \code{\link[=compare_genotypes]{compare_genotypes()}} or \code{\link[=compare_treatments]{compare_treatments()}}.}
+output of \code{\link[=compare_groups]{compare_groups()}}.}
 
 \item{...}{Additional arguments passed on to \code{\link[knitr:kable]{knitr::kable()}}. This function
 uses a local default of \code{digits = 3} to specify how many significant digits
@@ -59,6 +59,6 @@ values are printed as an empty string.
 gen_key <- read_key_csv(mctr_ex("example-gen-key.csv"))
 gen_trab <- read_trabecular_csv(mctr_ex("example-trabecular.csv"),
                             gen_key)
-Sp.trab <- gen_trab |> dplyr::filter(Site == "Spine") |> compare_genotypes()
+Sp.trab <- gen_trab |> dplyr::filter(Site == "Spine") |> compare_groups()
 print_results(Sp.trab)
 }

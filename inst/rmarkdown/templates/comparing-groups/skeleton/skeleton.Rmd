@@ -44,14 +44,14 @@ mfe <- read_mfe_excel(here(params$data), key)
 F.Met.Tb <- trab |> 
     filter(Site == "Met")
 
-F.Met.Tb_res <- compare_genotypes(F.Met.Tb)
+F.Met.Tb_res <- compare_groups(F.Met.Tb)
 print_results(F.Met.Tb_res)
 ```
 
 ### Data
 
 ```{r f-met-tb-dat, results = "asis"}
-print_genotype_data(F.Met.Tb)
+print_data(F.Met.Tb)
 ```
 
 ### Combined Sexes
@@ -59,14 +59,14 @@ print_genotype_data(F.Met.Tb)
 ```{r f-met-tb-combined, results = "asis"}
 F.Met.Tb |> 
     mutate(Sex = "B") |> 
-    compare_genotypes() |> 
+    compare_groups() |> 
     print_results()
 ```
 
 ### Plots
 
 ```{r f-met-tb-plot}
-plot_genotypes(F.Met.Tb) |> print_plots()
+plot_groups(F.Met.Tb) |> print_plots()
 ```
 
 
@@ -78,14 +78,14 @@ plot_genotypes(F.Met.Tb) |> print_plots()
 F.Met.Ct <- cort |> 
     filter(Site == "Met")
 
-F.Met.Ct_res <- compare_genotypes(F.Met.Ct)
+F.Met.Ct_res <- compare_groups(F.Met.Ct)
 print_results(F.Met.Ct_res)
 ```
 
 ### Data
 
 ```{r f-met-ct-dat, results = "asis"}
-print_genotype_data(F.Met.Ct)
+print_data(F.Met.Ct)
 ```
 
 ### Combined Sexes
@@ -93,14 +93,14 @@ print_genotype_data(F.Met.Ct)
 ```{r f-met-ct-combined, results = "asis"}
 F.Met.Ct |> 
     mutate(Sex = "B") |> 
-    compare_genotypes() |> 
+    compare_groups() |> 
     print_results()
 ```
 
 ### Plots
 
 ```{r f-met-ct-plot}
-plot_genotypes(F.Met.Ct) |> print_plots()
+plot_groups(F.Met.Ct) |> print_plots()
 ```
 
 
@@ -112,14 +112,14 @@ plot_genotypes(F.Met.Ct) |> print_plots()
 F.Met.FEA <- mfe |> 
     filter(Site == "Met")
 
-F.Met.FEA_res <- compare_genotypes(F.Met.FEA)
+F.Met.FEA_res <- compare_groups(F.Met.FEA)
 print_results(F.Met.FEA_res)
 ```
 
 ### Data
 
 ```{r f-met-fea-dat, results = "asis"}
-print_genotype_data(F.Met.FEA)
+print_data(F.Met.FEA)
 ```
 
 ### Combined Sexes
@@ -127,14 +127,14 @@ print_genotype_data(F.Met.FEA)
 ```{r f-met-fea-combined, results = "asis"}
 F.Met.FEA |> 
     mutate(Sex = "B") |> 
-    compare_genotypes() |> 
+    compare_groups() |> 
     print_results()
 ```
 
 ### Plots
 
 ```{r f-met-fea-plot, fig.width = 3}
-plot_genotypes(F.Met.FEA) |> print_plots()
+plot_groups(F.Met.FEA) |> print_plots()
 ```
 
 
@@ -148,14 +148,14 @@ plot_genotypes(F.Met.FEA) |> print_plots()
 F.Dia.Ct <- cort |> 
     filter(Site == "Dia")
 
-F.Dia.Ct_res <- compare_genotypes(F.Dia.Ct)
+F.Dia.Ct_res <- compare_groups(F.Dia.Ct)
 print_results(F.Dia.Ct_res)
 ```
 
 ### Data
 
 ```{r f-dia-ct-dat, results = "asis"}
-print_genotype_data(F.Dia.Ct)
+print_data(F.Dia.Ct)
 ```
 
 ### Combined Sexes
@@ -163,14 +163,14 @@ print_genotype_data(F.Dia.Ct)
 ```{r f-dia-ct-combined, results = "asis"}
 F.Dia.Ct |> 
     mutate(Sex = "B") |> 
-    compare_genotypes() |> 
+    compare_groups() |> 
     print_results()
 ```
 
 ### Plots
 
 ```{r f-dia-ct-plot}
-plot_genotypes(F.Dia.Ct) |> print_plots()
+plot_groups(F.Dia.Ct) |> print_plots()
 ```
 
 
@@ -182,14 +182,14 @@ plot_genotypes(F.Dia.Ct) |> print_plots()
 F.Dia.FEA <- mfe |> 
     filter(Site == "Dia")
 
-F.Dia.FEA_res <- compare_genotypes(F.Dia.FEA)
+F.Dia.FEA_res <- compare_groups(F.Dia.FEA)
 print_results(F.Dia.FEA_res)
 ```
 
 ### Data
 
 ```{r f-dia-fea-dat, results = "asis"}
-print_genotype_data(F.Dia.FEA)
+print_data(F.Dia.FEA)
 ```
 
 ### Combined Sexes
@@ -197,14 +197,14 @@ print_genotype_data(F.Dia.FEA)
 ```{r f-dia-fea-combined, results = "asis"}
 F.Dia.FEA |> 
     mutate(Sex = "B") |> 
-    compare_genotypes() |> 
+    compare_groups() |> 
     print_results()
 ```
 
 ### Plots
 
 ```{r f-dia-fea-plot, fig.width = 3}
-plot_genotypes(F.Dia.FEA) |> print_plots()
+plot_groups(F.Dia.FEA) |> print_plots()
 ```
 
 
@@ -218,14 +218,14 @@ plot_genotypes(F.Dia.FEA) |> print_plots()
 Spine.Tb <- trab |> 
     filter(Site == "Spine")
 
-Spine.Tb_res <- compare_genotypes(Spine.Tb)
+Spine.Tb_res <- compare_groups(Spine.Tb)
 print_results(Spine.Tb_res)
 ```
 
 ### Data
 
 ```{r sp-tb-dat, results = "asis"}
-print_genotype_data(Spine.Tb)
+print_data(Spine.Tb)
 ```
 
 ### Combined Sexes
@@ -233,14 +233,14 @@ print_genotype_data(Spine.Tb)
 ```{r sp-tb-combined, results = "asis"}
 Spine.Tb |> 
     mutate(Sex = "B") |> 
-    compare_genotypes() |> 
+    compare_groups() |> 
     print_results()
 ```
 
 ### Plots
 
 ```{r sp-tb-plot}
-plot_genotypes(Spine.Tb) |> print_plots()
+plot_groups(Spine.Tb) |> print_plots()
 ```
 
 
@@ -252,14 +252,14 @@ plot_genotypes(Spine.Tb) |> print_plots()
 Spine.FEA <- mfe |> 
     filter(Site == "Spine")
 
-Spine.FEA_res <- compare_genotypes(Spine.FEA)
+Spine.FEA_res <- compare_groups(Spine.FEA)
 print_results(Spine.FEA_res)
 ```
 
 ### Data
 
 ```{r sp-fea-dat, results = "asis"}
-print_genotype_data(Spine.FEA)
+print_data(Spine.FEA)
 ```
 
 ### Combined Sexes
@@ -267,14 +267,14 @@ print_genotype_data(Spine.FEA)
 ```{r sp-fea-combined, results = "asis"}
 Spine.FEA |> 
     mutate(Sex = "B") |> 
-    compare_genotypes() |> 
+    compare_groups() |> 
     print_results()
 ```
 
 ### Plots
 
 ```{r sp-fea-plot, fig.width = 3}
-plot_genotypes(Spine.FEA) |> print_plots()
+plot_groups(Spine.FEA) |> print_plots()
 ```
 
 

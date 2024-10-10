@@ -1,5 +1,5 @@
 ---
-title: "Comparing Genotypes"
+title: "Comparing Treatments"
 output: 
     rmarkdown::html_vignette:
         toc: true
@@ -7,7 +7,7 @@ output:
         highlight: tango
         tabset: true
 vignette: >
-  %\VignetteIndexEntry{Comparing Genotypes}
+  %\VignetteIndexEntry{Comparing Treatments}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -29,13 +29,13 @@ library(dplyr)
 Read in data:
 
 ```{r read-data}
-key <- read_key_excel(mctr_ex("example-genotype.xlsx"))
+key <- read_key_excel(mctr_ex("example-treatment.xlsx"))
 
-trab <- read_trabecular_excel(mctr_ex("example-genotype.xlsx"), key)
+trab <- read_trabecular_excel(mctr_ex("example-treatment.xlsx"), key)
 
-cort <- read_cortical_excel(mctr_ex("example-genotype.xlsx"), key)
+cort <- read_cortical_excel(mctr_ex("example-treatment.xlsx"), key)
 
-mfe <- read_mfe_excel(mctr_ex("example-genotype.xlsx"), key)
+mfe <- read_mfe_excel(mctr_ex("example-treatment.xlsx"), key)
 ```
 
 # Femoral Metaphysis

@@ -2,30 +2,35 @@
 % Please edit documentation in R/create.R
 \name{create_genotype_comparison}
 \alias{create_genotype_comparison}
-\title{Create a project skeleton to compare bone microCT data between genotypes}
+\alias{create_treatment_comparison}
+\title{Create a project skeleton to compare bone microCT data}
 \usage{
 create_genotype_comparison(
-  file_name = paste0(format(Sys.Date(), "\%F"), "-microCT-Genotype-Comparison.Rmd")
+  file_name = paste0(format(Sys.Date(), "\%F"), "-microCT-Analysis.Rmd")
+)
+
+create_treatment_comparison(
+  file_name = paste0(format(Sys.Date(), "\%F"), "-microCT-Analysis.Rmd")
 )
 }
 \arguments{
 \item{file_name}{A string to name the project analysis R Markdown document.
-Defaults to a file in the style of
-\code{"YYYY-MM-DD-microCT-Genotype-Comparison.Rmd"}, where \code{YYYY-MM-DD}
-represents today's date.}
+Defaults to a file in the style of \code{"YYYY-MM-DD-microCT-Analysis.Rmd"},
+where \code{YYYY-MM-DD} represents today's date.}
 }
 \value{
 Returns \code{TRUE} if successful.
 }
 \description{
-This function assumes you are in a project root directory and creates an R
+These functions assume you are in a project root directory and create an R
 Markdown file containing a pre-filled bone microCT analysis comparing two
-genotypes. It also creates a \code{data.xlsx} template file into which to paste
-the microCT data. The \code{data.xlsx} file additionally has a \code{Key} sheet to
-specify the appropriate sample information.
+genotypes or two treatments. They also create a \code{data.xlsx} template file
+into which to paste the microCT data. The \code{data.xlsx} file additionally has a
+\code{Key} sheet to specify the appropriate sample information.
 }
 \examples{
 \dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 create_genotype_comparison()
+create_treatment_comparison()
 \dontshow{\}) # examplesIf}
 }
