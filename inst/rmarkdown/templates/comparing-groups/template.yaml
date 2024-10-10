@@ -1,5 +1,5 @@
-name: Comparing Genotypes
+name: Comparing microCT Groups
 description: >
    A standardized, pre-filled template for analyzing bone microCT data,
-   comparing two genotypes.
+   comparing two genotypes or treatments.
 create_dir: FALSE

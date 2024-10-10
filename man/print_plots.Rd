@@ -21,5 +21,5 @@ gen_key <- read_key_csv(mctr_ex("example-gen-key.csv"))
 gen_cort <- read_cortical_csv(mctr_ex("example-twice1.csv"),
                           mctr_ex("example-twice2.csv"),
                           gen_key)
-plot_genotypes(gen_cort |> dplyr::filter(Site == "Dia")) |> print_plots()
+plot_groups(gen_cort |> dplyr::filter(Site == "Dia")) |> print_plots()
 }
