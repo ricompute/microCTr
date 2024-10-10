@@ -215,9 +215,17 @@ read_cortical_csv <- function(twice1_file, twice2_file, key, ...) {
     twice1 <- read_twice1_csv(twice1_file, key, ...)
     twice2 <- read_twice2_csv(twice2_file, key, ...)
 
-    cort <- dplyr::right_join(twice1, twice2,
-                              by = dplyr::join_by(AS, Sex, Genotype,
-                                                  SampNo, Site, MeasNo)) |>
+    if ("Genotype" %in% names(key)) {
+        cort <- dplyr::right_join(twice1, twice2,
+                                  by = dplyr::join_by(AS, Sex, Genotype,
+                                                      SampNo, Site, MeasNo))
+    } else if ("Treatment" %in% names(key)) {
+        cort <- dplyr::right_join(twice1, twice2,
+                                  by = dplyr::join_by(AS, Sex, Treatment,
+                                                      SampNo, Site, MeasNo))
+    }
+
+    cort <- cort |>
         dplyr::mutate(Peri.V = TV.1,
                       Peri.Ar = Peri.V / (50 * 0.0105),
                       Peri.Rad = sqrt(Peri.Ar / pi),
@@ -231,9 +239,18 @@ read_cortical_csv <- function(twice1_file, twice2_file, key, ...) {
                       Ct.Th = Peri.Rad - End.Rad,
                       Ct.Po.V = Ct.Po * Ct.V,
                       Ct.vBMD = Mean2) |>
-        dplyr::mutate(Ct.Po = Ct.Po * 100) |>
-        dplyr::select(AS, Sex, Genotype, SampNo, Site, MeasNo,
-                      Ct.vBMD, Ct.Th, End.Circ, Peri.Circ, Ct.Po, Ct.Po.V)
+        dplyr::mutate(Ct.Po = Ct.Po * 100)
+
+    if ("Genotype" %in% names(key)) {
+        cort <- cort |>
+            dplyr::select(AS, Sex, Genotype, SampNo, Site, MeasNo,
+                          Ct.vBMD, Ct.Th, End.Circ, Peri.Circ, Ct.Po, Ct.Po.V)
+    } else if ("Treatment" %in% names(key)) {
+        cort <- cort |>
+            dplyr::select(AS, Sex, Treatment, SampNo, Site, MeasNo,
+                          Ct.vBMD, Ct.Th, End.Circ, Peri.Circ, Ct.Po, Ct.Po.V)
+    }
+
     cort
 }
 
@@ -243,9 +260,17 @@ read_cortical_excel <- function(data_file, key, twice1_sheet = "Twice1", twice2_
     twice1 <- read_twice1_excel(data_file, key, sheet = twice1_sheet, ...)
     twice2 <- read_twice2_excel(data_file, key, sheet = twice2_sheet, ...)
 
-    cort <- dplyr::right_join(twice1, twice2,
-                              by = dplyr::join_by(AS, Sex, Genotype,
-                                                  SampNo, Site, MeasNo)) |>
+    if ("Genotype" %in% names(key)) {
+        cort <- dplyr::right_join(twice1, twice2,
+                                  by = dplyr::join_by(AS, Sex, Genotype,
+                                                      SampNo, Site, MeasNo))
+    } else if ("Treatment" %in% names(key)) {
+        cort <- dplyr::right_join(twice1, twice2,
+                                  by = dplyr::join_by(AS, Sex, Genotype,
+                                                      SampNo, Site, MeasNo))
+    }
+
+    cort <- cort |>
         dplyr::mutate(Peri.V = TV.1,
                       Peri.Ar = Peri.V / (50 * 0.0105),
                       Peri.Rad = sqrt(Peri.Ar / pi),
@@ -259,9 +284,18 @@ read_cortical_excel <- function(data_file, key, twice1_sheet = "Twice1", twice2_
                       Ct.Th = Peri.Rad - End.Rad,
                       Ct.Po.V = Ct.Po * Ct.V,
                       Ct.vBMD = Mean2) |>
-        dplyr::mutate(Ct.Po = Ct.Po * 100) |>
-        dplyr::select(AS, Sex, Genotype, SampNo, Site, MeasNo,
-                      Ct.vBMD, Ct.Th, End.Circ, Peri.Circ, Ct.Po, Ct.Po.V)
+        dplyr::mutate(Ct.Po = Ct.Po * 100)
+
+    if ("Genotype" %in% names(key)) {
+        cort <- cort |>
+            dplyr::select(AS, Sex, Genotype, SampNo, Site, MeasNo,
+                          Ct.vBMD, Ct.Th, End.Circ, Peri.Circ, Ct.Po, Ct.Po.V)
+    } else if ("Treatment" %in% names(key)) {
+        cort <- cort |>
+            dplyr::select(AS, Sex, Treatment, SampNo, Site, MeasNo,
+                          Ct.vBMD, Ct.Th, End.Circ, Peri.Circ, Ct.Po, Ct.Po.V)
+    }
+
     cort
 }
 

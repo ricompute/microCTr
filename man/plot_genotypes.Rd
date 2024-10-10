@@ -2,14 +2,17 @@
 % Please edit documentation in R/plot_data.R
 \name{plot_genotypes}
 \alias{plot_genotypes}
-\title{Plot bone microCT data by genotype}
+\alias{plot_treatments}
+\title{Plot bone microCT data by genotype or treatment}
 \usage{
 plot_genotypes(data, type = NULL, title = "sex")
+
+plot_treatments(data, type = NULL, title = "sex")
 }
 \arguments{
 \item{data}{A tibble/data frame containing bone microCT data, formatted as is
 the output of \code{\link[=read_trabecular_csv]{read_trabecular_csv()}}, \code{\link[=read_cortical_csv]{read_cortical_csv()}}, or
-\code{\link[=read_mfe_csv]{read_mfe_csv()}}.}
+\code{\link[=read_mfe_csv]{read_mfe_csv()}} (or \verb{read_*_excel()}).}
 
 \item{type}{A string indicating the type of data supplied. Options include
 \code{trabecular}, \code{cortical}, or \code{fea}. Alternatively, a specific microCT
@@ -21,17 +24,17 @@ Defaults to \code{sex}, which is currently the only option implemented. To
 remove titles from the plots, set \code{title} to \code{NULL}.}
 }
 \value{
-A list containing \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}} objects for each analyzed. To
-print each plot without printing the list index, see \code{\link[=print_plots]{print_plots()}}.
+A list containing \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}} objects for sex each analyzed.
+To print each plot without printing the list index, see \code{\link[=print_plots]{print_plots()}}.
 }
 \description{
 This function takes in bone microCT data and produces boxplots comparing two
-genotypes.
+genotypes or treatments.
 }
 \details{
-If the two genotypes are significantly different, statistical significance
-will be indicated with \code{"*"} if \emph{P} < 0.05, \code{"**"} if \emph{P} < 0.01, or \code{"***"}
-if \emph{P} < 0.001.
+If the two genotypes or treatments are significantly different, statistical
+significance will be indicated with \code{"*"} if \emph{P} < 0.05, \code{"**"} if \emph{P} <
+0.01, or \code{"***"} if \emph{P} < 0.001.
 }
 \examples{
 gen_key <- read_key_csv(mctr_ex("example-gen-key.csv"))
@@ -39,4 +42,9 @@ gen_cort <- read_cortical_csv(mctr_ex("example-twice1.csv"),
                           mctr_ex("example-twice2.csv"),
                           gen_key)
 plot_genotypes(gen_cort |> dplyr::filter(Site == "Dia"))
+tx_key <- read_key_csv(mctr_ex("example-tx-key.csv"))
+tx_cort <- read_cortical_csv(mctr_ex("example-twice1.csv"),
+                          mctr_ex("example-twice2.csv"),
+                          tx_key)
+plot_treatments(tx_cort |> dplyr::filter(Site == "Dia"))
 }

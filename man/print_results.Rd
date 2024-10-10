@@ -8,7 +8,7 @@ print_results(results, ...)
 }
 \arguments{
 \item{results}{A list of microCT comparison results, formatted as is the
-output of \code{\link[=compare_genotypes]{compare_genotypes()}}.}
+output of \code{\link[=compare_genotypes]{compare_genotypes()}} or \code{\link[=compare_treatments]{compare_treatments()}}.}
 
 \item{...}{Additional arguments passed on to \code{\link[knitr:kable]{knitr::kable()}}. This function
 uses a local default of \code{digits = 3} to specify how many significant digits

@@ -2,14 +2,17 @@
 % Please edit documentation in R/print_results.R
 \name{print_genotype_data}
 \alias{print_genotype_data}
+\alias{print_treatment_data}
 \title{Print bone microCT data}
 \usage{
 print_genotype_data(data, ...)
+
+print_treatment_data(data, ...)
 }
 \arguments{
 \item{data}{A data frame containing bone microCT data, formatted as is the
 output of \code{\link[=read_trabecular_csv]{read_trabecular_csv()}}, \code{\link[=read_cortical_csv]{read_cortical_csv()}}, or
-\code{\link[=read_mfe_csv]{read_mfe_csv()}}.}
+\code{\link[=read_mfe_csv]{read_mfe_csv()}} (or \verb{read_*_excel()}).}
 
 \item{...}{Additional arguments passed on to \code{\link[knitr:kable]{knitr::kable()}}. This function
 uses a local default of \code{digits = 3} to specify how many significant digits
@@ -50,6 +53,10 @@ option set to allow for pretty formatting.
 \examples{
 gen_key <- read_key_csv(mctr_ex("example-gen-key.csv"))
 gen_trab <- read_trabecular_csv(mctr_ex("example-trabecular.csv"),
-                            gen_key)
+                                gen_key)
 print_genotype_data(gen_trab |> dplyr::filter(Site == "Met"))
+tx_key <- read_key_csv(mctr_ex("example-tx-key.csv"))
+tx_trab <- read_trabecular_csv(mctr_ex("example-trabecular.csv"),
+                               tx_key)
+print_treatment_data(tx_trab |> dplyr::filter(Site == "Met"))
 }

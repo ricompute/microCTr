@@ -2,15 +2,18 @@
 % Please edit documentation in R/analyze_data.R
 \name{compare_genotypes}
 \alias{compare_genotypes}
-\title{Compare microCT data between two genotypes}
+\alias{compare_treatments}
+\title{Compare microCT data between two genotypes or treatments}
 \usage{
 compare_genotypes(data, type = NULL)
+
+compare_treatments(data, type = NULL)
 }
 \arguments{
 \item{data}{Trabecular bone microCT data in a data frame, formatted as is the
 output of \code{\link[=read_trabecular_csv]{read_trabecular_csv()}}, \code{\link[=read_cortical_csv]{read_cortical_csv()}}, or
-\code{\link[=read_mfe_csv]{read_mfe_csv()}}. Note that data for only one Site can be supplied at a
-time.}
+\code{\link[=read_mfe_csv]{read_mfe_csv()}} (or \verb{read_*_excel()}). Note that data for only one Site
+can be supplied at a time.}
 
 \item{type}{A string indicating the type of data supplied. Options include
 \code{trabecular}, \code{cortical}, or \code{fea}. Defaults to \code{NULL}, in which case the
@@ -19,14 +22,15 @@ function will try to figure out which type of data it is.}
 \value{
 A list of each bone measure analyzed. Each measure is itself a list
 of each sex analyzed. Each sex is a tibble/data frame containing columns
-for \code{Sex}, \code{Genotype}, \code{n}, \code{Mean}, \code{SEM}, \code{P}, and \code{Sig} (a string
-containing \code{"*"} if \emph{P} < 0.05, \code{"**"} if \emph{P} < 0.01, or \code{"***"} if
+for \code{Sex}, \code{Genotype} (or \code{Treatment}), \code{n}, \code{Mean}, \code{SEM}, \code{P}, and \code{Sig}
+(a string containing \code{"*"} if \emph{P} < 0.05, \code{"**"} if \emph{P} < 0.01, or \code{"***"}
+if
 \emph{P} < 0.001).
 }
 \description{
 This function takes in trabecular, cortical, or finite element analysis bone
-microCT data at one site and compares it between two genotypes using a
-Student's \emph{t}-test.
+microCT data at one site and compares it between two genotypes or two
+treatments using a Student's \emph{t}-test.
 }
 \details{
 If \code{trabecular} bone data are supplied, the measures compared include:
@@ -61,4 +65,9 @@ gen_trab <- read_trabecular_csv(mctr_ex("example-trabecular.csv"),
                             gen_key)
 Spine.Tb <- gen_trab |> dplyr::filter(Site == "Spine") |>
                 compare_genotypes()
+tx_key <- read_key_csv(mctr_ex("example-tx-key.csv"))
+tx_trab <- read_trabecular_csv(mctr_ex("example-trabecular.csv"),
+                               tx_key)
+Spine.Tb <- tx_trab |> dplyr::filter(Site == "Spine") |>
+                compare_treatments()
 }

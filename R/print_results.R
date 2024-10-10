@@ -7,7 +7,7 @@
 #'
 #' @param data A data frame containing bone microCT data, formatted as is the
 #'   output of [read_trabecular_csv()], [read_cortical_csv()], or
-#'   [read_mfe_csv()].
+#'   [read_mfe_csv()] (or `read_*_excel()`).
 #' @param ... Additional arguments passed on to [knitr::kable()]. This function
 #'   uses a local default of `digits = 3` to specify how many significant digits
 #'   to print. This can be modified by passing a user specified `digits` value.
@@ -42,8 +42,12 @@
 #' @examples
 #' gen_key <- read_key_csv(mctr_ex("example-gen-key.csv"))
 #' gen_trab <- read_trabecular_csv(mctr_ex("example-trabecular.csv"),
-#'                             gen_key)
+#'                                 gen_key)
 #' print_genotype_data(gen_trab |> dplyr::filter(Site == "Met"))
+#' tx_key <- read_key_csv(mctr_ex("example-tx-key.csv"))
+#' tx_trab <- read_trabecular_csv(mctr_ex("example-trabecular.csv"),
+#'                                tx_key)
+#' print_treatment_data(tx_trab |> dplyr::filter(Site == "Met"))
 print_genotype_data <- function(data, ...) {
     withr::local_options(list(digits = 3))
     sexes <- data$Sex |> unique()
@@ -52,6 +56,21 @@ print_genotype_data <- function(data, ...) {
                                dplyr::filter(Sex == sexes[j]) |>
                                dplyr::select(-SampNo, -Site, -MeasNo) |>
                                dplyr::arrange(Genotype),
+                           ...))
+        cat("\n\n")
+    }
+}
+
+#' @rdname print_genotype_data
+#' @export
+print_treatment_data <- function(data, ...) {
+    withr::local_options(list(digits = 3))
+    sexes <- data$Sex |> unique()
+    for (j in 1:length(sexes)) {
+        print(knitr::kable(data |>
+                               dplyr::filter(Sex == sexes[j]) |>
+                               dplyr::select(-SampNo, -Site, -MeasNo) |>
+                               dplyr::arrange(Treatment),
                            ...))
         cat("\n\n")
     }
@@ -66,7 +85,7 @@ print_genotype_data <- function(data, ...) {
 #' values are printed as an empty string.
 #'
 #' @param results A list of microCT comparison results, formatted as is the
-#'   output of [compare_genotypes()].
+#'   output of [compare_genotypes()] or [compare_treatments()].
 #' @param ... Additional arguments passed on to [knitr::kable()]. This function
 #'   uses a local default of `digits = 3` to specify how many significant digits
 #'   to print. This can be modified by passing a user specified `digits` value.
