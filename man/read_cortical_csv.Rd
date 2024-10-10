@@ -36,8 +36,8 @@ cortical bone microCT data from two files: a \code{twice1.csv} and a
 genotype, and site information.
 }
 \examples{
-key <- read_key_csv(microCTr_example("example-key.csv"))
-cort <- read_cortical_csv(microCTr_example("example-twice1.csv"),
-                          microCTr_example("example-twice2.csv"),
-                          key)
+gen_key <- read_key_csv(mctr_ex("example-gen-key.csv"))
+gen_cort <- read_cortical_csv(mctr_ex("example-twice1.csv"),
+                          mctr_ex("example-twice2.csv"),
+                          gen_key)
 }

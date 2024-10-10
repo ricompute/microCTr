@@ -51,7 +51,7 @@ print_results(F.Met.Tb_res)
 ### Data
 
 ```{r f-met-tb-dat, results = "asis"}
-print_data(F.Met.Tb)
+print_genotype_data(F.Met.Tb)
 ```
 
 ### Combined Sexes
@@ -85,7 +85,7 @@ print_results(F.Met.Ct_res)
 ### Data
 
 ```{r f-met-ct-dat, results = "asis"}
-print_data(F.Met.Ct)
+print_genotype_data(F.Met.Ct)
 ```
 
 ### Combined Sexes
@@ -119,7 +119,7 @@ print_results(F.Met.FEA_res)
 ### Data
 
 ```{r f-met-fea-dat, results = "asis"}
-print_data(F.Met.FEA)
+print_genotype_data(F.Met.FEA)
 ```
 
 ### Combined Sexes
@@ -155,7 +155,7 @@ print_results(F.Dia.Ct_res)
 ### Data
 
 ```{r f-dia-ct-dat, results = "asis"}
-print_data(F.Dia.Ct)
+print_genotype_data(F.Dia.Ct)
 ```
 
 ### Combined Sexes
@@ -189,7 +189,7 @@ print_results(F.Dia.FEA_res)
 ### Data
 
 ```{r f-dia-fea-dat, results = "asis"}
-print_data(F.Dia.FEA)
+print_genotype_data(F.Dia.FEA)
 ```
 
 ### Combined Sexes
@@ -225,7 +225,7 @@ print_results(Spine.Tb_res)
 ### Data
 
 ```{r sp-tb-dat, results = "asis"}
-print_data(Spine.Tb)
+print_genotype_data(Spine.Tb)
 ```
 
 ### Combined Sexes
@@ -259,7 +259,7 @@ print_results(Spine.FEA_res)
 ### Data
 
 ```{r sp-fea-dat, results = "asis"}
-print_data(Spine.FEA)
+print_genotype_data(Spine.FEA)
 ```
 
 ### Combined Sexes

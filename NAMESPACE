@@ -2,9 +2,9 @@
 
 export(compare_genotypes)
 export(create_genotype_comparison)
-export(microCTr_example)
+export(mctr_ex)
 export(plot_genotypes)
-export(print_data)
+export(print_genotype_data)
 export(print_plots)
 export(print_results)
 export(read_cortical_csv)

@@ -34,7 +34,7 @@ finite element analysis microCT data from a \code{mfe.csv} file. It uses
 a \code{key} object to look up and add sex, genotype, and site information.
 }
 \examples{
-key <- read_key_csv(microCTr_example("example-key.csv"))
-mfe <- read_mfe_csv(microCTr_example("example-mfe.csv"),
-                                     key)
+gen_key <- read_key_csv(mctr_ex("example-gen-key.csv"))
+gen_mfe <- read_mfe_csv(mctr_ex("example-mfe.csv"),
+                                     gen_key)
 }

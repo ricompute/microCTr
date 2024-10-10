@@ -23,11 +23,11 @@
 #' @export
 #'
 #' @examples
-#' key <- read_key_csv(microCTr_example("example-key.csv"))
-#' cort <- read_cortical_csv(microCTr_example("example-twice1.csv"),
-#'                           microCTr_example("example-twice2.csv"),
-#'                           key)
-#' plot_genotypes(cort |> dplyr::filter(Site == "Dia"))
+#' gen_key <- read_key_csv(mctr_ex("example-gen-key.csv"))
+#' gen_cort <- read_cortical_csv(mctr_ex("example-twice1.csv"),
+#'                           mctr_ex("example-twice2.csv"),
+#'                           gen_key)
+#' plot_genotypes(gen_cort |> dplyr::filter(Site == "Dia"))
 plot_genotypes <- function(data, type = NULL, title = "sex") {
     if (is.null(type)) {
         if ("Tb.N" %in% names(data)) {
@@ -151,11 +151,11 @@ plot_genotypes <- function(data, type = NULL, title = "sex") {
 #' @export
 #'
 #' @examples
-#' key <- read_key_csv(microCTr_example("example-key.csv"))
-#' cort <- read_cortical_csv(microCTr_example("example-twice1.csv"),
-#'                           microCTr_example("example-twice2.csv"),
-#'                           key)
-#' plot_genotypes(cort |> dplyr::filter(Site == "Dia")) |> print_plots()
+#' gen_key <- read_key_csv(mctr_ex("example-gen-key.csv"))
+#' gen_cort <- read_cortical_csv(mctr_ex("example-twice1.csv"),
+#'                           mctr_ex("example-twice2.csv"),
+#'                           gen_key)
+#' plot_genotypes(gen_cort |> dplyr::filter(Site == "Dia")) |> print_plots()
 print_plots <- function(plots) {
     for (p in plots) {
         print(p)

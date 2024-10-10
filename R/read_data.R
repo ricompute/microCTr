@@ -26,7 +26,7 @@
 #' @export
 #'
 #' @examples
-#' key <- read_key_csv(microCTr_example("example-key.csv"))
+#' gen_key <- read_key_csv(mctr_ex("example-gen-key.csv"))
 read_key_csv <- function(file, sites = c("Spine", "Met", "Dia"), ...) {
     key <- readr::read_csv(file, ...) |>
         tidyr::pivot_longer(cols = sites,
@@ -61,9 +61,9 @@ read_key_csv <- function(file, sites = c("Spine", "Met", "Dia"), ...) {
 #' @export
 #'
 #' @examples
-#' key <- read_key_csv(microCTr_example("example-key.csv"))
-#' trab <- read_trabecular_csv(microCTr_example("example-trabecular.csv"),
-#'                                          key = key)
+#' gen_key <- read_key_csv(mctr_ex("example-gen-key.csv"))
+#' gen_trab <- read_trabecular_csv(mctr_ex("example-trabecular.csv"),
+#'                                          key = gen_key)
 read_trabecular_csv <- function(file, key, ...) {
     trab <- readr::read_csv(file, ...) |>
         dplyr::select(SampNo, MeasNo,
@@ -132,10 +132,10 @@ read_twice2_csv <- function(twice2_file, key, ...) {
 #' @export
 #'
 #' @examples
-#' key <- read_key_csv(microCTr_example("example-key.csv"))
-#' cort <- read_cortical_csv(microCTr_example("example-twice1.csv"),
-#'                           microCTr_example("example-twice2.csv"),
-#'                           key)
+#' gen_key <- read_key_csv(mctr_ex("example-gen-key.csv"))
+#' gen_cort <- read_cortical_csv(mctr_ex("example-twice1.csv"),
+#'                           mctr_ex("example-twice2.csv"),
+#'                           gen_key)
 read_cortical_csv <- function(twice1_file, twice2_file, key, ...) {
     twice1 <- read_twice1_csv(twice1_file, key, ...)
     twice2 <- read_twice2_csv(twice2_file, key, ...)
@@ -188,9 +188,9 @@ read_cortical_csv <- function(twice1_file, twice2_file, key, ...) {
 #' @export
 #'
 #' @examples
-#' key <- read_key_csv(microCTr_example("example-key.csv"))
-#' mfe <- read_mfe_csv(microCTr_example("example-mfe.csv"),
-#'                                      key)
+#' gen_key <- read_key_csv(mctr_ex("example-gen-key.csv"))
+#' gen_mfe <- read_mfe_csv(mctr_ex("example-mfe.csv"),
+#'                                      gen_key)
 read_mfe_csv <- function(file, key, ...) {
     mfe <- readr::read_csv(file, ...) |>
         dplyr::select(SampNo, MeasNo,

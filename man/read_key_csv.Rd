@@ -35,5 +35,5 @@ AS (key registry) number, sex, genotype (if applicable), treatment (if
 applicable), sample number, and the measure number of each site scanned.
 }
 \examples{
-key <- read_key_csv(microCTr_example("example-key.csv"))
+gen_key <- read_key_csv(mctr_ex("example-gen-key.csv"))
 }

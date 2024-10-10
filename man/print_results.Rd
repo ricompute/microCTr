@@ -56,9 +56,9 @@ have the \code{results = "asis"} option to allow pretty formatting. Any \code{NA
 values are printed as an empty string.
 }
 \examples{
-key <- read_key_csv(microCTr_example("example-key.csv"))
-trab <- read_trabecular_csv(microCTr_example("example-trabecular.csv"),
-                            key)
-Sp.trab <- trab |> dplyr::filter(Site == "Spine") |> compare_genotypes()
+gen_key <- read_key_csv(mctr_ex("example-gen-key.csv"))
+gen_trab <- read_trabecular_csv(mctr_ex("example-trabecular.csv"),
+                            gen_key)
+Sp.trab <- gen_trab |> dplyr::filter(Site == "Spine") |> compare_genotypes()
 print_results(Sp.trab)
 }

@@ -12,9 +12,9 @@
 #' @export
 #'
 #' @examples
-#' microCTr_example()
-#' microCTr_example("example-key.csv")
-microCTr_example <- function(path = NULL) {
+#' mctr_ex()
+#' mctr_ex("example-gen-key.csv")
+mctr_ex <- function(path = NULL) {
     if (is.null(path)) {
         dir(system.file("extdata", package = "microCTr"))
     } else {

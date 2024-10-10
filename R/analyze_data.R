@@ -62,10 +62,10 @@ fea_measures <- c("S", "F.ult")
 #' @export
 #'
 #' @examples
-#' key <- read_key_csv(microCTr_example("example-key.csv"))
-#' trab <- read_trabecular_csv(microCTr_example("example-trabecular.csv"),
-#'                             key)
-#' Spine.Tb <- trab |> dplyr::filter(Site == "Spine") |>
+#' gen_key <- read_key_csv(mctr_ex("example-gen-key.csv"))
+#' gen_trab <- read_trabecular_csv(mctr_ex("example-trabecular.csv"),
+#'                             gen_key)
+#' Spine.Tb <- gen_trab |> dplyr::filter(Site == "Spine") |>
 #'                 compare_genotypes()
 compare_genotypes <- function(data, type = NULL) {
     if (is.null(type)) {

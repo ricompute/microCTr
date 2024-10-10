@@ -40,19 +40,19 @@ create_genotype_comparison <- function(file_name = paste0(format(Sys.Date(),
                                  package = "microCTr"),
               to = here::here("data", "key.csv"))
     file.copy(from = system.file("templates",
-                                 "genotype-trabecular.csv",
+                                 "trabecular.csv",
                                  package = "microCTr"),
               to = here::here("data", "trabecular.csv"))
     file.copy(from = system.file("templates",
-                                 "genotype-twice1.csv",
+                                 "twice1.csv",
                                  package = "microCTr"),
               to = here::here("data", "twice1.csv"))
     file.copy(from = system.file("templates",
-                                 "genotype-twice2.csv",
+                                 "twice2.csv",
                                  package = "microCTr"),
               to = here::here("data", "twice2.csv"))
     file.copy(from = system.file("templates",
-                                 "genotype-mfe.csv",
+                                 "mfe.csv",
                                  package = "microCTr"),
               to = here::here("data", "mfe.csv"))
 }

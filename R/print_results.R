@@ -40,11 +40,11 @@
 #' @export
 #'
 #' @examples
-#' key <- read_key_csv(microCTr_example("example-key.csv"))
-#' trab <- read_trabecular_csv(microCTr_example("example-trabecular.csv"),
-#'                             key)
-#' print_data(trab |> dplyr::filter(Site == "Met"))
-print_data <- function(data, ...) {
+#' gen_key <- read_key_csv(mctr_ex("example-gen-key.csv"))
+#' gen_trab <- read_trabecular_csv(mctr_ex("example-trabecular.csv"),
+#'                             gen_key)
+#' print_genotype_data(gen_trab |> dplyr::filter(Site == "Met"))
+print_genotype_data <- function(data, ...) {
     withr::local_options(list(digits = 3))
     sexes <- data$Sex |> unique()
     for (j in 1:length(sexes)) {
@@ -105,10 +105,10 @@ print_data <- function(data, ...) {
 #' @export
 #'
 #' @examples
-#' key <- read_key_csv(microCTr_example("example-key.csv"))
-#' trab <- read_trabecular_csv(microCTr_example("example-trabecular.csv"),
-#'                             key)
-#' Sp.trab <- trab |> dplyr::filter(Site == "Spine") |> compare_genotypes()
+#' gen_key <- read_key_csv(mctr_ex("example-gen-key.csv"))
+#' gen_trab <- read_trabecular_csv(mctr_ex("example-trabecular.csv"),
+#'                             gen_key)
+#' Sp.trab <- gen_trab |> dplyr::filter(Site == "Spine") |> compare_genotypes()
 #' print_results(Sp.trab)
 print_results <- function(results, ...) {
     withr::local_options(list(digits = 3, knitr.kable.NA = ""))

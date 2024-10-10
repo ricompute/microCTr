@@ -17,9 +17,9 @@ This function iterates through a list of plots and prints them (without
 printing the list index).
 }
 \examples{
-key <- read_key_csv(microCTr_example("example-key.csv"))
-cort <- read_cortical_csv(microCTr_example("example-twice1.csv"),
-                          microCTr_example("example-twice2.csv"),
-                          key)
-plot_genotypes(cort |> dplyr::filter(Site == "Dia")) |> print_plots()
+gen_key <- read_key_csv(mctr_ex("example-gen-key.csv"))
+gen_cort <- read_cortical_csv(mctr_ex("example-twice1.csv"),
+                          mctr_ex("example-twice2.csv"),
+                          gen_key)
+plot_genotypes(gen_cort |> dplyr::filter(Site == "Dia")) |> print_plots()
 }

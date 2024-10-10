@@ -34,9 +34,9 @@ will be indicated with \code{"*"} if \emph{P} < 0.05, \code{"**"} if \emph{P} < 
 if \emph{P} < 0.001.
 }
 \examples{
-key <- read_key_csv(microCTr_example("example-key.csv"))
-cort <- read_cortical_csv(microCTr_example("example-twice1.csv"),
-                          microCTr_example("example-twice2.csv"),
-                          key)
-plot_genotypes(cort |> dplyr::filter(Site == "Dia"))
+gen_key <- read_key_csv(mctr_ex("example-gen-key.csv"))
+gen_cort <- read_cortical_csv(mctr_ex("example-twice1.csv"),
+                          mctr_ex("example-twice2.csv"),
+                          gen_key)
+plot_genotypes(gen_cort |> dplyr::filter(Site == "Dia"))
 }

@@ -33,7 +33,7 @@ trabecular bone microCT data from a \code{trabecular.csv} file. It uses a
 \code{key} object to look up and add sex, genotype, and site information.
 }
 \examples{
-key <- read_key_csv(microCTr_example("example-key.csv"))
-trab <- read_trabecular_csv(microCTr_example("example-trabecular.csv"),
-                                         key = key)
+gen_key <- read_key_csv(mctr_ex("example-gen-key.csv"))
+gen_trab <- read_trabecular_csv(mctr_ex("example-trabecular.csv"),
+                                         key = gen_key)
 }
