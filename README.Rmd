@@ -43,12 +43,11 @@ analysis comparing two genotypes.
 ```{r example}
 library(microCTr)
 
-key <- read_key_csv(microCTr_example("example-key.csv"))
+key <- read_key_excel(mctr_ex("example-genotype.xlsx"))
 
-trab <- read_trabecular_csv(microCTr_example("example-trabecular.csv"),
-                            key)
+trab <- read_trabecular_excel(mctr_ex("example-genotype.xlsx"), key)
 
-F.Met.Trab <- trab |> dplyr::filter(Site == "Met") |> compare_genotypes()
+F.Met.Trab <- trab |> dplyr::filter(Site == "Met") |> compare_groups()
 ```
 
 ```{r print, results = "asis"}

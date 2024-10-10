@@ -31,29 +31,11 @@ analysis comparing two genotypes.
 ``` r
 library(microCTr)
 
-key <- read_key_csv(microCTr_example("example-key.csv"))
-#> Rows: 12 Columns: 7
-#> ── Column specification ────────────────────────────────────────────────────────
-#> Delimiter: ","
-#> chr (2): Sex, Genotype
-#> dbl (5): AS, SampNo, Spine, Met, Dia
-#> 
-#> ℹ Use `spec()` to retrieve the full column specification for this data.
-#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+key <- read_key_excel(mctr_ex("example-genotype.xlsx"))
 
-trab <- read_trabecular_csv(microCTr_example("example-trabecular.csv"),
-                            key)
-#> Rows: 24 Columns: 75
-#> ── Column specification ────────────────────────────────────────────────────────
-#> Delimiter: ","
-#> chr (19): SampName, MeasDate, ListDate, Filename, Site, Energy-I-Code, Contr...
-#> dbl (51): SampNo, MeasNo, Integr.Time, Sigma, Support, Threshold, Unit, Data...
-#> lgl  (5): S-DOB, S-Remark, Meas-Rmk, RAW-Label, IMA-Label
-#> 
-#> ℹ Use `spec()` to retrieve the full column specification for this data.
-#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+trab <- read_trabecular_excel(mctr_ex("example-genotype.xlsx"), key)
 
-F.Met.Trab <- trab |> dplyr::filter(Site == "Met") |> compare_genotypes()
+F.Met.Trab <- trab |> dplyr::filter(Site == "Met") |> compare_groups()
 ```
 
 ``` r
