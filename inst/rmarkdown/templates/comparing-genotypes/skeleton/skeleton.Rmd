@@ -8,6 +8,8 @@ output:
         toc: true
         toc_float: true
         highlight: tango
+params:
+    data: "data.xlsx"
 ---
 
 ```{r knitr-opts, include = FALSE}
@@ -23,15 +25,13 @@ library(here)
 ```
 
 ```{r read-data, collapse = TRUE}
-key <- read_key_csv(here("data", "key.csv"))
+key <- read_key_excel(here(params$data))
 
-trab <- read_trabecular_csv(here("data", "trabecular.csv"), key)
+trab <- read_trabecular_excel(here(params$data), key)
 
-cort <- read_cortical_csv(here("data", "twice1.csv"), 
-                          here("data", "twice2.csv"), 
-                          key)
+cort <- read_cortical_excel(here(params$data), key)
 
-mfe <- read_mfe_csv(here("data", "mfe.csv"), key)
+mfe <- read_mfe_excel(here(params$data), key)
 ```
 
 # Femoral Metaphysis
