@@ -84,7 +84,7 @@ if <em>P</em> &lt; 0.001.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">key</span> <span class="op">&lt;-</span> <span class="fu"><a href="read_key_csv.html">read_key_csv</a></span><span class="op">(</span><span class="fu"><a href="microCTr_example.html">microCTr_example</a></span><span class="op">(</span><span class="st">"example-key.csv"</span><span class="op">)</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">gen_key</span> <span class="op">&lt;-</span> <span class="fu"><a href="read_key_csv.html">read_key_csv</a></span><span class="op">(</span><span class="fu"><a href="mctr_ex.html">mctr_ex</a></span><span class="op">(</span><span class="st">"example-gen-key.csv"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">12</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">7</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Delimiter:</span> ","</span>
@@ -93,9 +93,9 @@ if <em>P</em> &lt; 0.001.</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span>
-<span class="r-in"><span><span class="va">cort</span> <span class="op">&lt;-</span> <span class="fu"><a href="read_cortical_csv.html">read_cortical_csv</a></span><span class="op">(</span><span class="fu"><a href="microCTr_example.html">microCTr_example</a></span><span class="op">(</span><span class="st">"example-twice1.csv"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>                          <span class="fu"><a href="microCTr_example.html">microCTr_example</a></span><span class="op">(</span><span class="st">"example-twice2.csv"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>                          <span class="va">key</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">gen_cort</span> <span class="op">&lt;-</span> <span class="fu"><a href="read_cortical_csv.html">read_cortical_csv</a></span><span class="op">(</span><span class="fu"><a href="mctr_ex.html">mctr_ex</a></span><span class="op">(</span><span class="st">"example-twice1.csv"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                          <span class="fu"><a href="mctr_ex.html">mctr_ex</a></span><span class="op">(</span><span class="st">"example-twice2.csv"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                          <span class="va">gen_key</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">36</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">75</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Delimiter:</span> ","</span>
@@ -114,7 +114,7 @@ if <em>P</em> &lt; 0.001.</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span>
-<span class="r-in"><span><span class="fu">plot_genotypes</span><span class="op">(</span><span class="va">cort</span> <span class="op">|&gt;</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Site</span> <span class="op">==</span> <span class="st">"Dia"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">plot_genotypes</span><span class="op">(</span><span class="va">gen_cort</span> <span class="op">|&gt;</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Site</span> <span class="op">==</span> <span class="st">"Dia"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $M</span>
 <span class="r-plt img"><img src="plot_genotypes-1.png" alt="" width="700" height="433"></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>

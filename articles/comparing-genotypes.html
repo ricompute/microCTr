@@ -76,7 +76,7 @@
 <span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span></code></pre></div>
 <p>Read in data:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">key</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_key_csv.html">read_key_csv</a></span><span class="op">(</span><span class="fu"><a href="../reference/microCTr_example.html">microCTr_example</a></span><span class="op">(</span><span class="st">"example-key.csv"</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">key</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_key_csv.html">read_key_csv</a></span><span class="op">(</span><span class="fu"><a href="../reference/mctr_ex.html">mctr_ex</a></span><span class="op">(</span><span class="st">"example-gen-key.csv"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">12</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">7</span></span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> ","</span></span>
@@ -86,7 +86,7 @@
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
 <span></span>
-<span><span class="va">trab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_trabecular_csv.html">read_trabecular_csv</a></span><span class="op">(</span><span class="fu"><a href="../reference/microCTr_example.html">microCTr_example</a></span><span class="op">(</span><span class="st">"example-trabecular.csv"</span><span class="op">)</span>,</span>
+<span><span class="va">trab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_trabecular_csv.html">read_trabecular_csv</a></span><span class="op">(</span><span class="fu"><a href="../reference/mctr_ex.html">mctr_ex</a></span><span class="op">(</span><span class="st">"example-trabecular.csv"</span><span class="op">)</span>,</span>
 <span>                            <span class="va">key</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">24</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">75</span></span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
@@ -98,8 +98,8 @@
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
 <span></span>
-<span><span class="va">cort</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_cortical_csv.html">read_cortical_csv</a></span><span class="op">(</span><span class="fu"><a href="../reference/microCTr_example.html">microCTr_example</a></span><span class="op">(</span><span class="st">"example-twice1.csv"</span><span class="op">)</span>,</span>
-<span>                          <span class="fu"><a href="../reference/microCTr_example.html">microCTr_example</a></span><span class="op">(</span><span class="st">"example-twice2.csv"</span><span class="op">)</span>,</span>
+<span><span class="va">cort</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_cortical_csv.html">read_cortical_csv</a></span><span class="op">(</span><span class="fu"><a href="../reference/mctr_ex.html">mctr_ex</a></span><span class="op">(</span><span class="st">"example-twice1.csv"</span><span class="op">)</span>,</span>
+<span>                          <span class="fu"><a href="../reference/mctr_ex.html">mctr_ex</a></span><span class="op">(</span><span class="st">"example-twice2.csv"</span><span class="op">)</span>,</span>
 <span>                          <span class="va">key</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">36</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">75</span></span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
@@ -120,7 +120,7 @@
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
 <span></span>
-<span><span class="va">mfe</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_mfe_csv.html">read_mfe_csv</a></span><span class="op">(</span><span class="fu"><a href="../reference/microCTr_example.html">microCTr_example</a></span><span class="op">(</span><span class="st">"example-mfe.csv"</span><span class="op">)</span>,</span>
+<span><span class="va">mfe</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_mfe_csv.html">read_mfe_csv</a></span><span class="op">(</span><span class="fu"><a href="../reference/mctr_ex.html">mctr_ex</a></span><span class="op">(</span><span class="st">"example-mfe.csv"</span><span class="op">)</span>,</span>
 <span>                    <span class="va">key</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">36</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">47</span></span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
@@ -517,7 +517,7 @@
 <h4 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
 </h4>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/print_data.html">print_data</a></span><span class="op">(</span><span class="va">F.Met.Tb</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/print_genotype_data.html">print_genotype_data</a></span><span class="op">(</span><span class="va">F.Met.Tb</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="right">AS</th>
@@ -1319,7 +1319,7 @@
 <h4 id="data-1">Data<a class="anchor" aria-label="anchor" href="#data-1"></a>
 </h4>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/print_data.html">print_data</a></span><span class="op">(</span><span class="va">F.Met.Ct</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/print_genotype_data.html">print_genotype_data</a></span><span class="op">(</span><span class="va">F.Met.Ct</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
 <col width="7%">
@@ -1905,7 +1905,7 @@
 <h4 id="data-2">Data<a class="anchor" aria-label="anchor" href="#data-2"></a>
 </h4>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/print_data.html">print_data</a></span><span class="op">(</span><span class="va">F.Met.FEA</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/print_genotype_data.html">print_genotype_data</a></span><span class="op">(</span><span class="va">F.Met.FEA</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="right">AS</th>
@@ -2561,7 +2561,7 @@
 <h4 id="data-3">Data<a class="anchor" aria-label="anchor" href="#data-3"></a>
 </h4>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/print_data.html">print_data</a></span><span class="op">(</span><span class="va">F.Dia.Ct</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/print_genotype_data.html">print_genotype_data</a></span><span class="op">(</span><span class="va">F.Dia.Ct</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
 <col width="7%">
@@ -3147,7 +3147,7 @@
 <h4 id="data-4">Data<a class="anchor" aria-label="anchor" href="#data-4"></a>
 </h4>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/print_data.html">print_data</a></span><span class="op">(</span><span class="va">F.Dia.FEA</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/print_genotype_data.html">print_genotype_data</a></span><span class="op">(</span><span class="va">F.Dia.FEA</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="right">AS</th>
@@ -3731,7 +3731,7 @@
 <h4 id="data-5">Data<a class="anchor" aria-label="anchor" href="#data-5"></a>
 </h4>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/print_data.html">print_data</a></span><span class="op">(</span><span class="va">Spine.Tb</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/print_genotype_data.html">print_genotype_data</a></span><span class="op">(</span><span class="va">Spine.Tb</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="right">AS</th>
@@ -4245,7 +4245,7 @@
 <h4 id="data-6">Data<a class="anchor" aria-label="anchor" href="#data-6"></a>
 </h4>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/print_data.html">print_data</a></span><span class="op">(</span><span class="va">Spine.FEA</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/print_genotype_data.html">print_genotype_data</a></span><span class="op">(</span><span class="va">Spine.FEA</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="right">AS</th>
