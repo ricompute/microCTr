@@ -26,6 +26,7 @@ Imports:
     withr,
     xfun
 Suggests: 
+    rlang,
     rmarkdown
 VignetteBuilder: knitr
 URL: https://ricompute.github.io/microCTr/

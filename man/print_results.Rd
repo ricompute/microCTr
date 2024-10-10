@@ -4,11 +4,14 @@
 \alias{print_results}
 \title{Print bone mciroCT comparison analysis results}
 \usage{
-print_results(results, ...)
+print_results(results, sig_color = "red", ...)
 }
 \arguments{
 \item{results}{A list of microCT comparison results, formatted as is the
 output of \code{\link[=compare_groups]{compare_groups()}}.}
+
+\item{sig_color}{What color to print a significant result. Defaults to
+\code{"red"}. Set to \code{NULL} to disable (and just print everything black).}
 
 \item{...}{Additional arguments passed on to \code{\link[knitr:kable]{knitr::kable()}}. This function
 uses a local default of \code{digits = 3} to specify how many significant digits

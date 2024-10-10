@@ -76,6 +76,8 @@ print_data <- function(data, ...) {
 #'
 #' @param results A list of microCT comparison results, formatted as is the
 #'   output of [compare_groups()].
+#' @param sig_color What color to print a significant result. Defaults to
+#'   `"red"`. Set to `NULL` to disable (and just print everything black).
 #' @param ... Additional arguments passed on to [knitr::kable()]. This function
 #'   uses a local default of `digits = 3` to specify how many significant digits
 #'   to print. This can be modified by passing a user specified `digits` value.
@@ -119,7 +121,7 @@ print_data <- function(data, ...) {
 #'                             gen_key)
 #' Sp.trab <- gen_trab |> dplyr::filter(Site == "Spine") |> compare_groups()
 #' print_results(Sp.trab)
-print_results <- function(results, ...) {
+print_results <- function(results, sig_color = "red", ...) {
     withr::local_options(list(digits = 3, knitr.kable.NA = ""))
     sexes <- names(results[[1]])
     if (length(sexes) == 2) {
@@ -127,8 +129,13 @@ print_results <- function(results, ...) {
         for (j in 1:length(sexes)) {
             cat("::: {}\n\n")
             for (i in 1:length(results)) {
-                cat("**", names(results)[i], "**", sep = "")
-                print(knitr::kable(results[[i]][sexes[j]], ...))
+                dat <- results[[i]][[sexes[j]]]
+                if ((sum(dat$Sig == "") == 2) | is.null(sig_color)) {
+                    cat("**", names(results)[i], "**", sep = "")
+                } else {
+                    cat("[**", names(results)[i], "**]{color=\"", sig_color, "\"}", sep = "")
+                }
+                print(knitr::kable(dat, ...))
                 cat("\n\n")
             }
             cat(":::\n\n")
