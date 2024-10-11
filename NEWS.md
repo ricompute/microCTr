@@ -1,4 +1,4 @@
-# microCTr (development version)
+# microCTr 1.1.1
 
 ## Minor improvements
 
