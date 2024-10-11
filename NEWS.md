@@ -4,6 +4,7 @@
 
 - `knit_with_colored_text()` was added to more seamlessly handle rendering R
   Markdown documents with colored text.
+- Add step-by-step articles to the package website.
 
 # microCTr 1.1.0
 
