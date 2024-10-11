@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">microCTr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,6 +37,8 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="articles/comparing-genotypes.html">Comparing Genotypes</a></li>
     <li><a class="dropdown-item" href="articles/comparing-treatments.html">Comparing Treatments</a></li>
+    <li><a class="dropdown-item" href="articles/setup-r.html">Setting Up R, RStudio, &amp; microCTr</a></li>
+    <li><a class="dropdown-item" href="articles/standard-report.html">Create and Run a Standard microCT Analysis</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
@@ -63,8 +65,8 @@
 </h2>
 <p>You can install the development version of microCTr from <a href="https://github.com/ricompute/microCTr" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
-<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"ricompute/microCTr"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ricompute/microCTr"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
@@ -83,8 +85,6 @@
 <div style="display: flex;">
 <div>
 <p><strong>BV/TV</strong></p>
-<table class="table kable_wrapper"><tbody><tr>
-<td>
 <table class="table">
 <thead><tr class="header">
 <th align="left">Sex</th>
@@ -116,11 +116,7 @@
 </tr>
 </tbody>
 </table>
-</td>
-</tr></tbody></table>
 <p><strong>SMI</strong></p>
-<table class="table kable_wrapper"><tbody><tr>
-<td>
 <table class="table">
 <thead><tr class="header">
 <th align="left">Sex</th>
@@ -152,11 +148,7 @@
 </tr>
 </tbody>
 </table>
-</td>
-</tr></tbody></table>
 <p><strong>Tb.N</strong></p>
-<table class="table kable_wrapper"><tbody><tr>
-<td>
 <table class="table">
 <thead><tr class="header">
 <th align="left">Sex</th>
@@ -188,11 +180,7 @@
 </tr>
 </tbody>
 </table>
-</td>
-</tr></tbody></table>
 <p><strong>Tb.Th</strong></p>
-<table class="table kable_wrapper"><tbody><tr>
-<td>
 <table class="table">
 <thead><tr class="header">
 <th align="left">Sex</th>
@@ -224,11 +212,7 @@
 </tr>
 </tbody>
 </table>
-</td>
-</tr></tbody></table>
 <p><strong>Tb.Sp</strong></p>
-<table class="table kable_wrapper"><tbody><tr>
-<td>
 <table class="table">
 <thead><tr class="header">
 <th align="left">Sex</th>
@@ -260,13 +244,9 @@
 </tr>
 </tbody>
 </table>
-</td>
-</tr></tbody></table>
 </div>
 <div>
 <p><strong>BV/TV</strong></p>
-<table class="table kable_wrapper"><tbody><tr>
-<td>
 <table class="table">
 <thead><tr class="header">
 <th align="left">Sex</th>
@@ -298,11 +278,7 @@
 </tr>
 </tbody>
 </table>
-</td>
-</tr></tbody></table>
 <p><strong>SMI</strong></p>
-<table class="table kable_wrapper"><tbody><tr>
-<td>
 <table class="table">
 <thead><tr class="header">
 <th align="left">Sex</th>
@@ -334,11 +310,7 @@
 </tr>
 </tbody>
 </table>
-</td>
-</tr></tbody></table>
 <p><strong>Tb.N</strong></p>
-<table class="table kable_wrapper"><tbody><tr>
-<td>
 <table class="table">
 <thead><tr class="header">
 <th align="left">Sex</th>
@@ -370,11 +342,7 @@
 </tr>
 </tbody>
 </table>
-</td>
-</tr></tbody></table>
 <p><strong>Tb.Th</strong></p>
-<table class="table kable_wrapper"><tbody><tr>
-<td>
 <table class="table">
 <thead><tr class="header">
 <th align="left">Sex</th>
@@ -406,11 +374,7 @@
 </tr>
 </tbody>
 </table>
-</td>
-</tr></tbody></table>
 <p><strong>Tb.Sp</strong></p>
-<table class="table kable_wrapper"><tbody><tr>
-<td>
 <table class="table">
 <thead><tr class="header">
 <th align="left">Sex</th>
@@ -442,8 +406,6 @@
 </tr>
 </tbody>
 </table>
-</td>
-</tr></tbody></table>
 </div>
 </div>
 </div>
