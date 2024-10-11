@@ -1,3 +1,10 @@
+# microCTr (development version)
+
+## Minor improvements
+
+- `knit_with_colored_text()` was added to more seamlessly handle rendering R
+  Markdown documents with colored text.
+
 # microCTr 1.1.0
 
 ## Minor improvements
