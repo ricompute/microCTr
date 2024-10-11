@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   comparing-genotypes: comparing-genotypes.html
   comparing-treatments: comparing-treatments.html
-last_built: 2024-10-11T16:23Z
+last_built: 2024-10-11T16:25Z
 urls:
   reference: https://ricompute.github.io/microCTr/reference
   article: https://ricompute.github.io/microCTr/articles
