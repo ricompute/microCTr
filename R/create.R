@@ -51,3 +51,33 @@ create_treatment_comparison <- function(file_name = paste0(format(Sys.Date(),
                                  package = "microCTr"),
               to = here::here("data.xlsx"))
 }
+
+#' Render an R Markdown document with colored text
+#'
+#' This function is a wrapper around [rmarkdown::render()] which supplies a
+#' custom Lua Pandoc filter to color text.
+#'
+#' @param input The input file to be rendered.
+#' @param ... Additional arguments passed on to [rmarkdown::render()].
+#'
+#' @return As for [rmarkdown::render()], when `run_pandoc = TRUE`, the compiled
+#'   document is written into the output file, and the path of the output file
+#'   is returned. When `run_pandoc = FALSE`, the path of the Markdown output
+#'   file, with attributes `knit_meta` (the knitr meta data collected from code
+#'   chunks) and `intermediates` (the intermediate files/directories generated
+#'   by [rmarkdown::render()]).
+#' @export
+#'
+#' @examplesIf FALSE
+#' knit_with_colored_text("example_file.Rmd")
+#'
+knit_with_colored_text <- function(input, ...) {
+    lua_filter <-  rmarkdown::pandoc_lua_filter_args(
+            system.file("pandoc", "color-text.lua", package = "microCTr")
+        )
+    rmarkdown::render(
+        input,
+        output_options = list(pandoc_args = lua_filter),
+        ...
+    )
+}

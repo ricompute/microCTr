@@ -8,7 +8,7 @@ output:
         toc: true
         toc_float: true
         highlight: tango
-        pandoc_args: ["--lua-filter=color-text.lua"]
+knit: microCTr::knit_with_colored_text
 params:
     data: "data.xlsx"
 ---
@@ -31,14 +31,6 @@ knitr::opts_chunk$set(
 library(microCTr)
 library(dplyr)
 library(here)
-
-# The `color-text.lua` file must be present to render this report
-if (!file.exists(here::here("color-text.lua")) & !rlang::is_interactive()) {
-    file.copy(
-        from = system.file("pandoc", "color-text.lua", package = "microCTr"),
-        to = here::here("color-text.lua")
-    )
-}
 ```
 
 ```{r read-data, collapse = TRUE}
