@@ -9,5 +9,6 @@ options(
         role = c("aut", "cre", "cph"),
         comment = c(ORCID = "0000-0001-9911-4136")
         ),
-    License  = "GPL (>= 3)"
+    License  = "GPL (>= 3)",
+    prompt = "R> "
 )

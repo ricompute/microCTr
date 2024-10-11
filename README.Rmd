@@ -30,8 +30,8 @@ finite element analysis.
 You can install the development version of microCTr from [GitHub](https://github.com/ricompute/microCTr) with:
 
 ``` r
-# install.packages("pak")
-pak::pak("ricompute/microCTr")
+# install.packages("remotes")
+remotes::install_github("ricompute/microCTr")
 ```
 
 ## Example
