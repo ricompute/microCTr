@@ -15,8 +15,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-This is a step-by-step to running a standard microCT analysis using microCTr.
-It assumes you already have your data exported from the scanner into text files.
+This is a step-by-step guide to running a standard microCT analysis using
+microCTr. It assumes you already have your data exported from the scanner into
+text files.
 
 # Create an RStudio Project
 
