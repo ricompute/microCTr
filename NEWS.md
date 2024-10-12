@@ -1,3 +1,10 @@
+# microCTr 1.1.2
+
+## Minor improvements
+
+- Fix typo in the "Create and Run a Standard microCT Analysis" website article.
+- Update the website homepage to contain more links.
+
 # microCTr 1.1.1
 
 ## Minor improvements
