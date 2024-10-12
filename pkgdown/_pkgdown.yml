@@ -1,0 +1,12 @@
+url: https://ricompute.github.io/microCTr/
+template:
+  bootstrap: 5
+home:
+    links:
+        - text: Browse source code
+          href: https://github.com/ricompute/microCTr
+        - text: Report a bug
+          href: https://github.com/ricompute/microCTr/issues
+authors:
+    Richard Lindsey:
+        href: "https://ricompute.com"
