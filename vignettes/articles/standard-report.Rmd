@@ -120,7 +120,7 @@ knitr::include_graphics("im/rmd-file.png")
 ```
 
 Replace `Template Title` with the title you'd like to give the report, `Your
-name` with your name, and `The Date` with today's date. For example:
+Name` with your name, and `The Date` with today's date. For example:
 
 ```{r echo = FALSE}
 knitr::include_graphics("im/rmd-metadata.png")
