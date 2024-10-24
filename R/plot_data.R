@@ -17,6 +17,9 @@
 #' @param title A string indicating what type of title the plots should have.
 #'   Defaults to `sex`, which is currently the only option implemented. To
 #'   remove titles from the plots, set `title` to `NULL`.
+#' @param x_axis_angle The angle at which to rotate the x-axis labels so they
+#'   don't overlap, passed on to [ggplot2::theme()] as `axis.text.x =
+#'   element_text(angle = x_axis_angle)`.
 #'
 #' @return A list containing [ggplot2::ggplot()] objects for sex each analyzed.
 #'   To print each plot without printing the list index, see [print_plots()].
@@ -28,7 +31,7 @@
 #'                           mctr_ex("example-twice2.csv"),
 #'                           gen_key)
 #' plot_groups(gen_cort |> dplyr::filter(Site == "Dia"))
-plot_groups <- function(data, type = NULL, title = "sex") {
+plot_groups <- function(data, type = NULL, title = "sex", x_axis_angle = 45) {
     if (is.null(type)) {
         if ("Tb.N" %in% names(data)) {
             measures <- trabecular_measures
@@ -142,7 +145,10 @@ plot_groups <- function(data, type = NULL, title = "sex") {
                                 nrow = 1) +
             ggplot2::geom_boxplot() +
             ggplot2::geom_point(position = ggplot2::position_jitter(width = 0.2)) +
-            ggplot2::expand_limits(y = 0)
+            ggplot2::expand_limits(y = 0) +
+            ggplot2::theme(axis.text.x = ggplot2::element_text(angle = x_axis_angle,
+                                                               vjust = 0.5,
+                                                               hjust = 0.5))
 
         if ("Genotype" %in% names(data)) {
             p <- p +

@@ -4,7 +4,7 @@
 \alias{plot_groups}
 \title{Plot bone microCT data by genotype or treatment}
 \usage{
-plot_groups(data, type = NULL, title = "sex")
+plot_groups(data, type = NULL, title = "sex", x_axis_angle = 45)
 }
 \arguments{
 \item{data}{A tibble/data frame containing bone microCT data, formatted as is
@@ -19,6 +19,9 @@ in which case the function will try to figure out which type of data it is.}
 \item{title}{A string indicating what type of title the plots should have.
 Defaults to \code{sex}, which is currently the only option implemented. To
 remove titles from the plots, set \code{title} to \code{NULL}.}
+
+\item{x_axis_angle}{The angle at which to rotate the x-axis labels so they
+don't overlap, passed on to \code{\link[ggplot2:theme]{ggplot2::theme()}} as \code{axis.text.x = element_text(angle = x_axis_angle)}.}
 }
 \value{
 A list containing \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}} objects for sex each analyzed.
