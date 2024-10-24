@@ -144,8 +144,13 @@ print_results <- function(results, sig_color = "red", ...) {
     } else if (length(sexes) == 1) {
         for (j in 1:length(sexes)) {
             for (i in 1:length(results)) {
-                cat("**", names(results)[i], "**", sep = "")
-                print(knitr::kable(results[[i]][sexes[j]], ...))
+                dat <- results[[i]][[sexes[j]]]
+                if ((sum(dat$Sig == "") == 2) | is.null(sig_color)) {
+                    cat("**", names(results)[i], "**", sep = "")
+                } else {
+                    cat("[**", names(results)[i], "**]{color=\"", sig_color, "\"}", sep = "")
+                }
+                print(knitr::kable(dat, ...))
                 cat("\n\n")
             }
         }
