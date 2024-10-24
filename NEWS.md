@@ -1,3 +1,17 @@
+# microCTr 1.2.0
+
+## New features
+
+- `update_microCTr()` was added as a convenience function with a corresponding
+  RStudio addin to update `microCTr` from GitHub.
+- An RStudio addin was added to convert a raw data Excel file into an organized
+  Excel file, powered by `create_organized_excel()`.
+  
+## Minor improvements
+
+- The x-axis labels in plots are now rotated by default.
+- Typos fixed.
+
 # microCTr 1.1.2
 
 ## Minor improvements
