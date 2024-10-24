@@ -2,7 +2,9 @@
 
 export(compare_groups)
 export(create_genotype_comparison)
+export(create_organized_excel)
 export(create_treatment_comparison)
+export(excel_export_addin)
 export(knit_with_colored_text)
 export(mctr_ex)
 export(plot_groups)

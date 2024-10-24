@@ -8,7 +8,7 @@ update_microCTr()
 }
 \description{
 This is a convenience function wrapper aroung \code{\link[remotes:install_github]{remotes::install_github()}} to
-install/update \link{microCTr}. Meant to be used as an RStudio addin.
+install/update \code{microCTr}. Meant to be used as an RStudio addin.
 }
 \examples{
 \dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}

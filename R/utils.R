@@ -1,7 +1,7 @@
 #' Update microCTr
 #'
 #' This is a convenience function wrapper aroung [remotes::install_github()] to
-#' install/update [microCTr]. Meant to be used as an RStudio addin.
+#' install/update `microCTr`. Meant to be used as an RStudio addin.
 #'
 #' @export
 #'

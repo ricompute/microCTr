@@ -13,3 +13,8 @@ Description: Install/update the microCTr package from GitHub
 Binding: update_microCTr
 Interactive: false
 
+Name: Export Organized Excel File
+Description: Select a raw data file and save out an organized Excel file
+Binding: excel_export_addin
+Interactive: false
+
