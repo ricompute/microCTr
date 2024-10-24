@@ -1,9 +1,15 @@
 Name: microCT Genotype Comparison Setup
-Description: New Addin Description
+Description: Setup this directory to compare two genotypes
 Binding: create_genotype_comparison
 Interactive: false
 
 Name: microCT Treatment Comparison Setup
-Description: New Addin Description
+Description: Setup this directory to compare two treatment groups
 Binding: create_treatment_comparison
 Interactive: false
+
+Name: Update microCTr
+Description: Install/update the microCTr package from GitHub
+Binding: update_microCTr
+Interactive: false
+

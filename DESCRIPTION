@@ -20,6 +20,7 @@ Imports:
     knitr,
     readr,
     readxl,
+    remotes,
     sessioninfo,
     stats,
     tidyr,
