@@ -8,6 +8,7 @@ output:
         toc: true
         toc_float: true
         highlight: tango
+        number_sections: true
 knit: microCTr::knit_with_colored_text
 params:
     data: "data.xlsx"
