@@ -12,6 +12,7 @@ output:
 knit: microCTr::knit_with_colored_text
 params:
     data: "data.xlsx"
+    digits: 3
 ---
 
 # Background
@@ -26,6 +27,7 @@ params:
 knitr::opts_chunk$set(
     fig.height = 3
 )
+options(digits = params$digits)
 ```
 
 ```{r setup, collapse = TRUE}

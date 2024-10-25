@@ -8,9 +8,7 @@
 #' @param data A data frame containing bone microCT data, formatted as is the
 #'   output of [read_trabecular_csv()], [read_cortical_csv()], or
 #'   [read_mfe_csv()] (or `read_*_excel()`).
-#' @param ... Additional arguments passed on to [knitr::kable()]. This function
-#'   uses a local default of `digits = 3` to specify how many significant digits
-#'   to print. This can be modified by passing a user specified `digits` value.
+#' @param ... Additional arguments passed on to [knitr::kable()].
 #'
 #' @return Text output which by default is a Pandoc markdown pipe table for each
 #'   sex contained in the `data` supplied. For example:
@@ -45,7 +43,6 @@
 #'                                 gen_key)
 #' print_data(gen_trab |> dplyr::filter(Site == "Met"))
 print_data <- function(data, ...) {
-    withr::local_options(list(digits = 3))
     sexes <- data$Sex |> unique()
     for (j in 1:length(sexes)) {
         if ("Genotype" %in% names(data)) {
@@ -78,9 +75,7 @@ print_data <- function(data, ...) {
 #'   output of [compare_groups()].
 #' @param sig_color What color to print a significant result. Defaults to
 #'   `"red"`. Set to `NULL` to disable (and just print everything black).
-#' @param ... Additional arguments passed on to [knitr::kable()]. This function
-#'   uses a local default of `digits = 3` to specify how many significant digits
-#'   to print. This can be modified by passing a user specified `digits` value.
+#' @param ... Additional arguments passed on to [knitr::kable()].
 #'
 #' @return Text output which is by default a Pandoc markdown pipe table for each
 #'   measure and each sex analyzed. If two sexes are analyzed, Pandoc fenced div
@@ -122,7 +117,7 @@ print_data <- function(data, ...) {
 #' Sp.trab <- gen_trab |> dplyr::filter(Site == "Spine") |> compare_groups()
 #' print_results(Sp.trab)
 print_results <- function(results, sig_color = "red", ...) {
-    withr::local_options(list(digits = 3, knitr.kable.NA = ""))
+    withr::local_options(list(knitr.kable.NA = ""))
     sexes <- names(results[[1]])
     if (length(sexes) == 2) {
         cat(":::: {style=\"display: flex;\"}\n\n")

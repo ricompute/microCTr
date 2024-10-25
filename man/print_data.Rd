@@ -11,9 +11,7 @@ print_data(data, ...)
 output of \code{\link[=read_trabecular_csv]{read_trabecular_csv()}}, \code{\link[=read_cortical_csv]{read_cortical_csv()}}, or
 \code{\link[=read_mfe_csv]{read_mfe_csv()}} (or \verb{read_*_excel()}).}
 
-\item{...}{Additional arguments passed on to \code{\link[knitr:kable]{knitr::kable()}}. This function
-uses a local default of \code{digits = 3} to specify how many significant digits
-to print. This can be modified by passing a user specified \code{digits} value.}
+\item{...}{Additional arguments passed on to \code{\link[knitr:kable]{knitr::kable()}}.}
 }
 \value{
 Text output which by default is a Pandoc markdown pipe table for each

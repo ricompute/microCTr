@@ -13,9 +13,7 @@ output of \code{\link[=compare_groups]{compare_groups()}}.}
 \item{sig_color}{What color to print a significant result. Defaults to
 \code{"red"}. Set to \code{NULL} to disable (and just print everything black).}
 
-\item{...}{Additional arguments passed on to \code{\link[knitr:kable]{knitr::kable()}}. This function
-uses a local default of \code{digits = 3} to specify how many significant digits
-to print. This can be modified by passing a user specified \code{digits} value.}
+\item{...}{Additional arguments passed on to \code{\link[knitr:kable]{knitr::kable()}}.}
 }
 \value{
 Text output which is by default a Pandoc markdown pipe table for each
