@@ -75,9 +75,7 @@ output of <code><a href="compare_groups.html">compare_groups()</a></code>.</p></
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
-<dd><p>Additional arguments passed on to <code><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">knitr::kable()</a></code>. This function
-uses a local default of <code>digits = 3</code> to specify how many significant digits
-to print. This can be modified by passing a user specified <code>digits</code> value.</p></dd>
+<dd><p>Additional arguments passed on to <code><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">knitr::kable()</a></code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -144,42 +142,42 @@ syntax is used to print the tables in two columns by sex. For example:</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> **BV/TV**</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |Sex |Genotype |  n| Mean|  SEM|     P|Sig |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |:---|:--------|--:|----:|----:|-----:|:---|</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |M   |Cre      |  3| 18.5| 2.73|      |    |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |M   |Cre;fl   |  3| 19.9| 1.92| 0.701|    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |Sex |Genotype |  n|     Mean|      SEM|         P|Sig |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |:---|:--------|--:|--------:|--------:|---------:|:---|</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |M   |Cre      |  3| 18.50667| 2.729007|          |    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |M   |Cre;fl   |  3| 19.88333| 1.920498| 0.7010951|    |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> **SMI**</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |Sex |Genotype |  n|  Mean|   SEM|     P|Sig |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |:---|:--------|--:|-----:|-----:|-----:|:---|</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |M   |Cre      |  3| 1.209| 0.215|      |    |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |M   |Cre;fl   |  3| 0.796| 0.128| 0.174|    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |Sex |Genotype |  n|      Mean|       SEM|         P|Sig |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |:---|:--------|--:|---------:|---------:|---------:|:---|</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |M   |Cre      |  3| 1.2090000| 0.2153279|          |    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |M   |Cre;fl   |  3| 0.7957667| 0.1276412| 0.1741153|    |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> **Tb.N**</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |Sex |Genotype |  n| Mean|   SEM|     P|Sig |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |:---|:--------|--:|----:|-----:|-----:|:---|</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |M   |Cre      |  3| 3.36| 0.135|      |    |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |M   |Cre;fl   |  3| 3.39| 0.334| 0.938|    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |Sex |Genotype |  n|     Mean|       SEM|         P|Sig |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |:---|:--------|--:|--------:|---------:|---------:|:---|</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |M   |Cre      |  3| 3.359600| 0.1352918|          |    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |M   |Cre;fl   |  3| 3.389533| 0.3342937| 0.9378375|    |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> **Tb.Th**</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |Sex |Genotype |  n|  Mean|   SEM|     P|Sig |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |:---|:--------|--:|-----:|-----:|-----:|:---|</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |M   |Cre      |  3| 0.061| 0.005|      |    |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |M   |Cre;fl   |  3| 0.059| 0.001| 0.782|    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |Sex |Genotype |  n|      Mean|       SEM|         P|Sig |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |:---|:--------|--:|---------:|---------:|---------:|:---|</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |M   |Cre      |  3| 0.0608000| 0.0053678|          |    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |M   |Cre;fl   |  3| 0.0591667| 0.0012863| 0.7820276|    |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> **Tb.Sp**</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |Sex |Genotype |  n|  Mean|   SEM|     P|Sig |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |:---|:--------|--:|-----:|-----:|-----:|:---|</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |M   |Cre      |  3| 0.297| 0.009|      |    |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |M   |Cre;fl   |  3| 0.299| 0.032| 0.963|    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |Sex |Genotype |  n|      Mean|       SEM|         P|Sig |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |:---|:--------|--:|---------:|---------:|---------:|:---|</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |M   |Cre      |  3| 0.2971333| 0.0092326|          |    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |M   |Cre;fl   |  3| 0.2987667| 0.0317294| 0.9629486|    |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> :::</span>
@@ -188,42 +186,42 @@ syntax is used to print the tables in two columns by sex. For example:</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> **BV/TV**</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |Sex |Genotype |  n| Mean|  SEM|     P|Sig |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |:---|:--------|--:|----:|----:|-----:|:---|</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |F   |Cre      |  3| 18.3| 1.80|      |    |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |F   |Cre;fl   |  3| 17.1| 1.62| 0.656|    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |Sex |Genotype |  n|     Mean|      SEM|         P|Sig |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |:---|:--------|--:|--------:|--------:|---------:|:---|</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |F   |Cre      |  3| 18.27333| 1.803416|          |    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |F   |Cre;fl   |  3| 17.11000| 1.621121| 0.6564675|    |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> **SMI**</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |Sex |Genotype |  n|  Mean|   SEM|     P|Sig |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |:---|:--------|--:|-----:|-----:|-----:|:---|</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |F   |Cre      |  3| 0.925| 0.083|      |    |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |F   |Cre;fl   |  3| 0.852| 0.157| 0.704|    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |Sex |Genotype |  n|      Mean|       SEM|         P|Sig |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |:---|:--------|--:|---------:|---------:|---------:|:---|</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |F   |Cre      |  3| 0.9251667| 0.0829199|          |    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |F   |Cre;fl   |  3| 0.8524667| 0.1574138| 0.7037516|    |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> **Tb.N**</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |Sex |Genotype |  n| Mean|   SEM|     P|Sig |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |:---|:--------|--:|----:|-----:|-----:|:---|</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |F   |Cre      |  3| 6.65| 3.802|      |    |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |F   |Cre;fl   |  3| 3.05| 0.248| 0.443|    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |Sex |Genotype |  n|     Mean|       SEM|         P|Sig |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |:---|:--------|--:|--------:|---------:|---------:|:---|</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |F   |Cre      |  3| 6.650367| 3.8016284|          |    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |F   |Cre;fl   |  3| 3.046233| 0.2479679| 0.4432629|    |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> **Tb.Th**</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |Sex |Genotype |  n|  Mean|   SEM|    P|Sig |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |:---|:--------|--:|-----:|-----:|----:|:---|</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |F   |Cre      |  3| 0.053| 0.004|     |    |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |F   |Cre;fl   |  3| 0.058| 0.001| 0.34|    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |Sex |Genotype |  n|      Mean|       SEM|       P|Sig |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |:---|:--------|--:|---------:|---------:|-------:|:---|</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |F   |Cre      |  3| 0.0532000| 0.0041789|        |    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |F   |Cre;fl   |  3| 0.0579333| 0.0012979| 0.34024|    |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> **Tb.Sp**</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |Sex |Genotype |  n|  Mean|   SEM|    P|Sig |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |:---|:--------|--:|-----:|-----:|----:|:---|</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |F   |Cre      |  3| 0.287| 0.098|     |    |</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |F   |Cre;fl   |  3| 0.335| 0.031| 0.66|    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |Sex |Genotype |  n|      Mean|       SEM|        P|Sig |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |:---|:--------|--:|---------:|---------:|--------:|:---|</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |F   |Cre      |  3| 0.2866333| 0.0982075|         |    |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |F   |Cre;fl   |  3| 0.3354667| 0.0314189| 0.660476|    |</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> :::</span>
