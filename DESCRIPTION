@@ -2,17 +2,15 @@ Package: microCTr
 Title: Analyze microCT Data
 Version: 1.2.0
 Authors@R: 
-    person("Richard", "Lindsey", , "richard.c.lindsey@ricompute.com", 
-    role = c("aut", "cre", "cph"), comment = c(ORCID = "0000-0001-9911-4136"))
-Description: This packages contains functions to read in and analyze microCT 
-    data as currently performed in the Khosla Lab. Data come from a Scanco 
-    vivaCT 40. Sites analyzed include femoral metaphysis, femoral diaphysis, and 
-    lumbar vertebra. Analyses include trabecular bone parameters, cortical bone 
-    parameters, and finite element analysis.
+    person("Richard", "Lindsey", , "richard.c.lindsey@ricompute.com", role = c("aut", "cre", "cph"),
+           comment = c(ORCID = "0000-0001-9911-4136"))
+Description: This packages contains functions to read in and analyze
+    microCT data as currently performed in the Khosla Lab. Data come from
+    a Scanco vivaCT 40. Sites analyzed include femoral metaphysis, femoral
+    diaphysis, and lumbar vertebra. Analyses include trabecular bone
+    parameters, cortical bone parameters, and finite element analysis.
 License: GPL (>= 3)
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+URL: https://ricompute.github.io/microCTr/
 Imports: 
     dplyr,
     ggplot2,
@@ -31,5 +29,8 @@ Imports:
 Suggests: 
     rlang,
     rmarkdown
-VignetteBuilder: knitr
-URL: https://ricompute.github.io/microCTr/
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
