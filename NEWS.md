@@ -1,3 +1,10 @@
+# microCTr 1.2.1
+
+## Minor improvements
+
+- `digits` can now be set as a parameter in the R Markdown template.
+- Housekeeping to remove notes from R CMD check.
+
 # microCTr 1.2.0
 
 ## New features
